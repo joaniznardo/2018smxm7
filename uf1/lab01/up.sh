@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker-compose up -d -f docker-compose.yml
+docker-compose -f docker-compose.yml up -d
 sleep 10
 
 
@@ -8,8 +8,9 @@ sleep 10
 ###### dhcpserver      ######
 #############################
 
-docker exec dhcpserver cp  /dhcp.conf.template  dhcpserver:/etc/dnsmasq.d/dhcp.conf
+docker cp dhcp.conf.template  dhcpserver:/etc/dnsmasq.d/dhcp.conf
 docker exec dhcpserver /bin/bash -c "service dnsmasq restart;service dnsmasq status"
+sleep 2 
 
 #############################
 ###### dhcpclient      ######
