@@ -10,22 +10,22 @@
 ### ./up.sh
 
 - comprovar els dos contenidors 
-  -- docker exec -it dhcpclient bash
-    --- ip a
-    --- exit
+  - docker exec -it dhcpclient bash
+    - ip a
+    - exit
 
 ### ./down.sh
 
 - proves a efectuar: 
--- crear més containers que interval
--- provar d'assignar ip + passarel·la + dns server
+  - crear més containers que interval
+  - provar d'assignar ip + passarel·la + dns server
 
 - fitxers a observar:
-  -- en el servidor: 
-    --- ips assignades
-  -- en el client:
-    --- període de concesió de la ip
+  - en el servidor: 
+    - ips assignades
+  - en el client:
+    - període de concesió de la ip
 
 - ampliacions:
-  -- portar el control centralitzat de les ips assignades (IPAM - phpipam vs opennetadmin)
+  - portar el control centralitzat de les ips assignades (IPAM - phpipam vs opennetadmin)
 
