@@ -1,5 +1,6 @@
 # lab02
 ## servidor dhcp dnsmasq - dues xarxes
+#### la novetat respecte al primer lab (lab01) és que ara configurem un únic servidor d'adreces ip (dhcpserver) per a cada subxara que volem gestionar (2 en aquest cas). El servidor de relleu/reenviament (dhcprelay) rep les peticions dels clients de la 2ona subxarxa i les ha de traspassar (les peticions) al servidor (únic) que ho gestiona tot. La part important és que el servidor (dhcpserver) ha de saber per on enviar les respostes (establiment de ruta estàtica al fitxer de post-configuració (up.sh)).
 
 ### Per a la realització d'aquests labs (dhcp) i atés que docker assigna una ip de manera automàtica als contenidors associats a una xarxa, farem servir el següent hack
 
@@ -10,13 +11,15 @@
 ### ./up.sh
 
 - comprovar els dos contenidors 
-  -- docker exec -it dhcpclient bash
+  -- docker exec -it dhcpclientx2 bash
     --- ip a
     --- exit
 
 ### ./down.sh
 
 - proves a efectuar: 
+-- posar clients també de la xarxa 1
+-- fer la traça dels paquets que s'envien amb tcpdump / wireshark
 -- crear més containers que interval
 -- provar d'assignar ip + passarel·la + dns server
 
