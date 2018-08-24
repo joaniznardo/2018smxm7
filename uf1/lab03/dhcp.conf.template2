@@ -1,0 +1,8 @@
+# ens assegurem de poder fer els canvis
+user=root
+
+# assignem un rang d'ips durant una durada
+dhcp-range=72.28.1.20,72.28.1.49,5m
+
+# deshabilitar el servidor dns de dnsmasq
+port=0
