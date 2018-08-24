@@ -1,0 +1,23 @@
+# ens assegurem de poder fer els canvis
+user=root
+
+# assignem un rang d'ips durant una durada
+dhcp-range=primeraxarxa,72.28.1.50,72.28.1.80,255.255.255.0,5m
+
+# indiquem que se configure la passarel.la
+dhcp-option=primeraxarxa,3,72.28.1.1
+
+# configurem el client del dns per al client
+dhcp-option=primeraxarxa,6,72.28.1.100
+
+# almenys un domini de 1er nivell + no reenviar packets amb ip no enrutables
+domain-needed
+bogus-priv
+
+domain=lab11.m7
+listen-address=127.0.0.1
+listen-address=72.28.1.100
+bind-interfaces
+
+local=/lab1.m7/
+
