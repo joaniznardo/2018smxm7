@@ -1,0 +1,12 @@
+#!/bin/bash
+## actualitzada la imatge ubuntum7dhcp1 amb inotify-tools
+## sudo apt install -y inotify-tools
+while true; 
+  do inotifywait -r -e create  /etc/ |  while read path action file; 
+       do echo "el fitxer $file s'ha creat a $path"; 
+       if test -n $(find $path -name $file | grep dhclient) ; then 
+#          cp $path$file /tmp/$file; 
+          cp $path$file /etc/resolv.conf; 
+       fi; 
+  done;  
+done

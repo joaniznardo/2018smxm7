@@ -14,7 +14,14 @@ services:
     networks:
       x1:
         ipv4_address: 72.28.1.101
-
+##    volumes:
+##      - ./resolv.conf:/etc/resolv.conf
+##    dns: 
+##      - 71.28.1.100
+##      - 8.8.8.8
+##    dns_search:
+##      - lab11.m7
+    
   dhcpdnsserver:
     image: joaniznardo/ubuntum7dhcp1
     privileged: true
