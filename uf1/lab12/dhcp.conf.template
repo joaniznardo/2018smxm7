@@ -1,0 +1,34 @@
+# ens assegurem de poder fer els canvis
+user=root
+
+
+
+# almenys un domini de 1er nivell + no reenviar packets amb ip no enrutables
+domain-needed
+bogus-priv
+
+domain=lab12
+local=/lab12/
+
+listen-address=127.0.0.1
+listen-address=72.28.1.100
+bind-interfaces
+
+address=/gateway.lab12/72.28.1.1
+address=/dnsserver.lab12/72.28.1.100
+address=/client01.lab12/72.28.1.101
+address=/client02.lab12/72.28.1.102 
+address=/client03.lab12/72.28.1.103
+
+ptr-record=1.1.28.72.in-addr.arpa,gateway.lab12
+ptr-record=100.1.28.72.in-addr.arpa,dnsserver.lab12
+ptr-record=101.1.28.72.in-addr.arpa,client01.lab12
+ptr-record=102.1.28.72.in-addr.arpa,client02.lab12
+ptr-record=103.1.28.72.in-addr.arpa,client03.lab12
+
+
+server=8.8.8.8
+server=8.8.4.4
+
+log-queries
+log-facility=/var/log/dnsmasq.log
