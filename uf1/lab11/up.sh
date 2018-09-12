@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## en cas de voler detall de què passa realment (màgia oculta)
+## docker-compose --verbose -f docker-compose.yml up -d
 docker-compose -f docker-compose.yml up -d
 sleep 2
 
@@ -24,7 +26,11 @@ sleep 1
 #### - comentat per inotify #### 
 ## docker cp resolv.conf dhcpclient:/etc/resolv.confi
 ## docker exec dhcpclient cp /etc/resolv.conf{i,}
+### just testing ## docker exec dhcpclient /bin/bash -c "resolvconf --updates-are-enabled; echo $?; resolvconf --enable-updates; echo $?; resolvconf --updates-are-enabled; echo $?"
 docker cp resolv.conf-cirumvention dhcpclient:/tmp/resolv.conf-circumvention
 docker exec -d dhcpclient sh /tmp/resolv.conf-circumvention 
+
+## per resoldre els noms a partir del dnsserver i no del /etc/hosts
+docker exec dhcpclient /bin/bash -c "sed -i -e '/hosts/s/files dns/dns files/g' /etc/nsswitch.conf"
 
 docker exec dhcpclient /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"

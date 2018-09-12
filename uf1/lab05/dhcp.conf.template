@@ -1,0 +1,15 @@
+# ens assegurem de poder fer els canvis
+user=root
+
+# assignem un rang d'ips durant una durada
+dhcp-range=72.28.1.50,72.28.1.80,5m
+
+# deshabilitar el servidor dns de dnsmasq
+port=0
+
+## la manera re reservar ips és per mac; compte de no reservar alguna que estiga DINS del rang de ips
+dhcp-host=02:42:48:1c:01:65,72.28.1.41
+## dhcp-host=dhcpclient01,72.28.1.41
+dhcp-host=02:42:48:1c:01:66,72.28.1.42
+dhcp-host=02:42:48:1c:01:67,72.28.1.43
+dhcp-host=02:42:48:1c:01:68,72.28.1.44
