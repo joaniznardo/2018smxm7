@@ -1,6 +1,8 @@
 # lab01
 ## servidor dhcp dnsmasq - una única xarxa - configuració de paràmetres addicionals
 
+### passem la ip de la passarel·la
+
 ### Per a la realització d'aquests labs (dhcp) i atés que docker assigna una ip de manera automàtica als contenidors associats a una xarxa, farem servir el següent hack
 
 - se crea una xarxa (paràmetre subnet)

@@ -6,3 +6,11 @@ dhcp-range=72.28.1.50,72.28.1.80,5m
 
 # deshabilitar el servidor dns de dnsmasq
 port=0
+
+# establim la passarel·la als clients (que pot coincidir o no amb el servidor de dhcp: en aquest cas no :) )
+dhcp-option=option:router,72.28.1.1
+
+## nota:
+## se pot indicar el codi (llista codis: dnsmasq --help dhcp)
+##
+##dhcp-option=option:3,72.28.1.1
