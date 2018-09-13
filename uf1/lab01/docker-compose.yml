@@ -13,7 +13,7 @@ services:
       - SYS_ADMIN
     networks:
       x1:
-        ipv4_address: 72.28.1.100
+        ipv4_address: 72.28.1.101
 
   dhcpserver:
     image: joaniznardo/ubuntum7dhcp1
@@ -23,7 +23,7 @@ services:
     container_name: dhcpserver
     networks:
       x1:
-        ipv4_address: 72.28.1.101
+        ipv4_address: 72.28.1.100
   
 networks:
   x1:

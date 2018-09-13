@@ -1,5 +1,6 @@
 # lab01
 ## servidor dhcp dnsmasq - una única xarxa
+ 
 
 ### Per a la realització d'aquests labs (dhcp) i atés que docker assigna una ip de manera automàtica als contenidors associats a una xarxa, farem servir el següent hack
 
@@ -17,15 +18,15 @@
 ### ./down.sh
 
 - proves a efectuar: 
-  - crear més containers que interval
-  - provar d'assignar ip + passarel·la + dns server
+  - crear més containers que interval (modificació del docker-compose.yml i el fitxer de configuració del dnsmasq)
+  - provar d'assignar ip + passarel·la 
 
 - fitxers a observar:
   - en el servidor: 
-    - ips assignades
+    - ips assignades 
   - en el client:
     - període de concesió de la ip
 
 - ampliacions:
   - portar el control centralitzat de les ips assignades (IPAM - phpipam vs opennetadmin)
-
+  - observar el procés de petició i renovació de la ip amb wireshark
