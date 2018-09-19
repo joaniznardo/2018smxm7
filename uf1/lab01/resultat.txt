@@ -7,8 +7,8 @@ dhcpserver   /bin/sh -c /etc/init.d/ssh ...   Up
 -------------------------------------
 =====================================
 ABANS d'activar el servidor i sol.licitar ip al client
-ip real del servidor abans canvis:  72.28.1.100/16
-ip real del client abans canvis:  72.28.1.101/16
+ip real del servidor :  72.28.1.100/16
+ip real del client :  72.28.1.101/16
 ip informada per docker del servidor 72.28.1.100
 ip informada per docker del servidor 72.28.1.101
 mac informada per docker del servidor 02:42:48:1c:01:64
@@ -16,8 +16,8 @@ mac informada per docker del servidor 02:42:48:1c:01:65
 -------------------------------------
 =====================================
 DESPRÉS d'activar el servidor i sol.licitar ip al client
-ip real del servidor abans canvis:  72.28.1.100/16
-ip real del client abans canvis:  72.28.1.77/16
+ip real del servidor :  72.28.1.100/16
+ip real del client :  72.28.1.77/16
 ip informada per docker del servidor 72.28.1.100
 ip informada per docker del servidor 72.28.1.101
 mac informada per docker del servidor 02:42:48:1c:01:64

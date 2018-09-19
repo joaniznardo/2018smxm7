@@ -13,8 +13,8 @@ echo "-------------------------------------"| tee -a resultat.txt
 #############################
 echo "====================================="| tee -a resultat.txt
 echo "ABANS d'activar el servidor i sol.licitar ip al client"| tee -a resultat.txt
-echo "ip real del servidor abans canvis: " `docker exec dhcpserver /bin/bash -c "ip -4 a" | grep inet | grep eth0 | awk '{print $2}'`| tee -a resultat.txt
-echo "ip real del client abans canvis: " `docker exec dhcpclient /bin/bash -c "ip -4 a" | grep inet | grep eth0 | awk '{print $2}'`| tee -a resultat.txt
+echo "ip real del servidor : " `docker exec dhcpserver /bin/bash -c "ip -4 a" | grep inet | grep eth0 | awk '{print $2}'`| tee -a resultat.txt
+echo "ip real del client : " `docker exec dhcpclient /bin/bash -c "ip -4 a" | grep inet | grep eth0 | awk '{print $2}'`| tee -a resultat.txt
 echo "ip informada per docker del servidor" `docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' dhcpserver`| tee -a resultat.txt
 echo "ip informada per docker del servidor" `docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' dhcpclient`| tee -a resultat.txt
 echo "mac informada per docker del servidor" `docker inspect --format='{{range .NetworkSettings.Networks}}{{.MacAddress}}{{end}}' dhcpserver`| tee -a resultat.txt
@@ -41,8 +41,8 @@ docker exec dhcpclient /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient e
 #############################
 echo "====================================="| tee -a resultat.txt
 echo "DESPRÉS d'activar el servidor i sol.licitar ip al client"| tee -a resultat.txt
-echo "ip real del servidor abans canvis: " `docker exec dhcpserver /bin/bash -c "ip -4 a" | grep inet | grep eth0 | awk '{print $2}'`| tee -a resultat.txt
-echo "ip real del client abans canvis: " `docker exec dhcpclient /bin/bash -c "ip -4 a" | grep inet | grep eth0 | awk '{print $2}'`| tee -a resultat.txt
+echo "ip real del servidor : " `docker exec dhcpserver /bin/bash -c "ip -4 a" | grep inet | grep eth0 | awk '{print $2}'`| tee -a resultat.txt
+echo "ip real del client : " `docker exec dhcpclient /bin/bash -c "ip -4 a" | grep inet | grep eth0 | awk '{print $2}'`| tee -a resultat.txt
 echo "ip informada per docker del servidor" `docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' dhcpserver`| tee -a resultat.txt
 echo "ip informada per docker del servidor" `docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' dhcpclient`| tee -a resultat.txt
 echo "mac informada per docker del servidor" `docker inspect --format='{{range .NetworkSettings.Networks}}{{.MacAddress}}{{end}}' dhcpserver`| tee -a resultat.txt
