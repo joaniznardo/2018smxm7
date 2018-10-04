@@ -9,6 +9,7 @@ sleep 2
 #############################
 
 docker cp dhcp.conf.template  dhcpserver:/etc/dnsmasq.d/dhcp.conf
+# fer que el nostre server puga arribar a les xarxes que no coneix"
 docker exec dhcpserver /bin/bash -c "route add -net 42.28.0.0 netmask 255.255.0.0 dev eth0"
 docker exec dhcpserver /bin/bash -c "route add -net 12.28.0.0 netmask 255.255.0.0 dev eth0"
 docker exec dhcpserver /bin/bash -c "service dnsmasq restart;service dnsmasq status"
@@ -31,22 +32,34 @@ docker exec dhcprelayx3 /bin/bash -c "service dnsmasq restart;service dnsmasq st
 sleep 1 
 
 #############################
-###### dhcpclientx1    ######
+## renovació de la ip del client X1
 #############################
 
-docker exec dhcpclientx1 /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"
+# -- alliberem la ip assignada per docker (en realitat nosaltres - és estàtica)
+docker exec dhcpclientx1 /bin/bash -c "ip addr flush eth0"
+
+# -- demanem una ip "a qui pugui escoltar" (servidor de dhcp, doncs ens hem acabat les ips amb el hack "ip-range" a docker-compose)
+docker exec dhcpclientx1 /bin/bash -c "dhclient eth0"
 
 #############################
-###### dhcpclientx2    ######
+## renovació de la ip del client X2
 #############################
 
-docker exec dhcpclientx2 /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"
+# -- alliberem la ip assignada per docker (en realitat nosaltres - és estàtica)
+docker exec dhcpclientx2 /bin/bash -c "ip addr flush eth0"
+
+# -- demanem una ip "a qui pugui escoltar" (servidor de dhcp, doncs ens hem acabat les ips amb el hack "ip-range" a docker-compose)
+docker exec dhcpclientx2 /bin/bash -c "dhclient eth0"
 
 #############################
-###### dhcpclientx3    ######
+## renovació de la ip del client X3
 #############################
 
-docker exec dhcpclientx3 /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"
+# -- alliberem la ip assignada per docker (en realitat nosaltres - és estàtica)
+docker exec dhcpclientx3 /bin/bash -c "ip addr flush eth0"
+
+# -- demanem una ip "a qui pugui escoltar" (servidor de dhcp, doncs ens hem acabat les ips amb el hack "ip-range" a docker-compose)
+docker exec dhcpclientx3 /bin/bash -c "dhclient eth0"
 
 
 #############################
