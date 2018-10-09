@@ -1,0 +1,39 @@
+version: '2'
+
+services:
+  
+  dhcpclient1:
+    image: joaniznardo/ubuntum7base
+    privileged: true
+    mem_limit: 100m
+    hostname: dhcpclient1        
+    container_name: dhcpclient1        
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    networks:
+      x1:
+        ipv4_address: 72.28.1.101        
+
+  dhcpserver:
+    image: joaniznardo/ubuntum7dhcp2
+    privileged: true
+    mem_limit: 100m
+    hostname: dhcpserver
+    container_name: dhcpserver
+    networks:
+      x1:
+        ipv4_address: 72.28.1.100
+  
+networks:
+  x1:
+    ipam:
+      driver: default
+      config:
+        - subnet: 72.28.0.0/16
+          ip_range: 72.28.1.0/30
+          gateway: 72.28.1.1
+          aux_addresses:
+            host0: 72.28.1.0
+            host1: 72.28.1.2
+            host2: 72.28.1.3
