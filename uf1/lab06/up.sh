@@ -8,13 +8,15 @@ sleep 10
 ###### dhcpserver      ######
 #############################
 
-docker cp dhcp.conf.template  dhcpserver:/etc/dnsmasq.d/dhcp.conf
-docker exec dhcpserver /bin/bash -c "service dnsmasq restart;service dnsmasq status"
+
+docker cp isc-dhcp-server.server1 dhcpserver:/etc/default/isc-dhcp-server
+docker cp dhcpd.conf.server1  dhcpserver:/etc/dhcp/dhcpd.conf
+docker exec dhcpserver /bin/bash -c "service isc-dhcp-server restart;service isc-dhcp-server status"
 sleep 2 
 
 #############################
 ###### dhcpclient      ######
 #############################
 
-docker exec dhcpclient /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"
+docker exec dhcpclient1 /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"
 

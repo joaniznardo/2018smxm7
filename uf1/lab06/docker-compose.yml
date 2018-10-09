@@ -2,21 +2,21 @@ version: '2'
 
 services:
   
-  dhcpclient:
+  dhcpclient1:
     image: joaniznardo/ubuntum7base
     privileged: true
     mem_limit: 100m
-##    hostname: dhcpclient${quants}
-##    container_name: dhcpclient${quants}
+    hostname: dhcpclient1        
+    container_name: dhcpclient1        
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
     networks:
       x1:
-        ipv4_address: 72.28.1.${quants}
+        ipv4_address: 72.28.1.101        
 
   dhcpserver:
-    image: joaniznardo/ubuntum7dhcp1
+    image: joaniznardo/ubuntum7dhcp2
     privileged: true
     mem_limit: 100m
     hostname: dhcpserver
@@ -34,5 +34,6 @@ networks:
           ip_range: 72.28.1.0/30
           gateway: 72.28.1.1
           aux_addresses:
+            host0: 72.28.1.0
             host1: 72.28.1.2
             host2: 72.28.1.3
