@@ -13,17 +13,17 @@
   
 ### links
 #### dhcp - basic & detailed
-[bàsic1](https://www.netmanias.com/en/?m=view&id=blog&no=6003)
-[bàsic2](https://www.netmanias.com/en/?m=view&id=techdocs&no=5998)
-[bàsic3](https://www.netmanias.com/en/?m=view&id=techdocs&no=5999)
+- [bàsic1](https://www.netmanias.com/en/?m=view&id=blog&no=6003)
+- [bàsic2](https://www.netmanias.com/en/?m=view&id=techdocs&no=5998)
+- [bàsic3](https://www.netmanias.com/en/?m=view&id=techdocs&no=5999)
 
 #### dhcp - relay agents
-[relay1](https://www.netmanias.com/en/?m=view&id=blog&no=6004)
-[relay2](https://www.netmanias.com/en/?m=view&id=techdocs&no=6000)
-[relay3](https://www.netmanias.com/en/post/techdocs/6000/dhcp-network-protocol/understanding-dhcp-relay-agents)
+- [relay1](https://www.netmanias.com/en/?m=view&id=blog&no=6004)
+- [relay2](https://www.netmanias.com/en/?m=view&id=techdocs&no=6000)
+- [relay3](https://www.netmanias.com/en/post/techdocs/6000/dhcp-network-protocol/understanding-dhcp-relay-agents)
 
 #### dhcp - proxy agents 
-[proxy1](https://www.netmanias.com/en/?m=view&id=techdocs&no=6001)
+- [proxy1](https://www.netmanias.com/en/?m=view&id=techdocs&no=6001)
 
 
 ## DNS
