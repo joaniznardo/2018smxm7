@@ -1,30 +1,31 @@
 #
-# /etc/dhcpd.conf for primary DHCP server
+# /etc/dhcpd.conf for secondary DHCP server
 #
 
 authoritative;
 ddns-update-style none;
 
 failover peer "dhcp-failover" {
-  primary; # declare this to be the primary server
-  address 72.28.1.100;
+  secondary; # declare this to be the secondary server
+  address 72.28.1.99;
   port 647;
-  peer address 72.28.1.99;
+  peer address 72.28.1.100;
   peer port 647;
   max-response-delay 30;
   max-unacked-updates 10;
   load balance max seconds 3;
-  mclt 1800;
-  split 20;
 }
 
 subnet 72.28.1.0 netmask 255.255.255.0 {
   option subnet-mask 255.255.255.0;
   option broadcast-address 72.28.1.255;
   option routers 72.28.1.1;
-#encara no ho informem#
-#  option domain-name-servers 192.168.10.1;
-##
+#
+#  encara no apliquem aquesta opció: clients dns
+#
+#  option domain-name-servers 72.28.1.1;
+#
+#
   pool {
     failover peer "dhcp-failover";
     max-lease-time 1800; # 30 minutes

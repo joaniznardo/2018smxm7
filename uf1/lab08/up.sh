@@ -5,13 +5,23 @@ sleep 10
 
 
 #############################
-###### dhcpserver      ######
+###### dhcpserver1     ######
 #############################
 
 
-docker cp isc-dhcp-server.server1 dhcpserver:/etc/default/isc-dhcp-server
-docker cp dhcpd.conf.server1  dhcpserver:/etc/dhcp/dhcpd.conf
-docker exec dhcpserver /bin/bash -c "service isc-dhcp-server restart;service isc-dhcp-server status"
+docker cp isc-dhcp-server.server1 dhcpserver1:/etc/default/isc-dhcp-server
+docker cp dhcpd.conf.server1  dhcpserver1:/etc/dhcp/dhcpd.conf
+docker exec dhcpserver1 /bin/bash -c "service isc-dhcp-server restart;service isc-dhcp-server status"
+sleep 2 
+
+#############################
+###### dhcpserver2     ######
+#############################
+
+
+docker cp isc-dhcp-server.server2 dhcpserver2:/etc/default/isc-dhcp-server
+docker cp dhcpd.conf.server2  dhcpserver2:/etc/dhcp/dhcpd.conf
+docker exec dhcpserver2 /bin/bash -c "service isc-dhcp-server restart;service isc-dhcp-server status"
 sleep 2 
 
 #############################
@@ -19,4 +29,10 @@ sleep 2
 #############################
 
 docker exec dhcpclient1 /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"
+
+#############################
+###### dhcpclient2     ######
+#############################
+
+docker exec dhcpclient2 /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"
 

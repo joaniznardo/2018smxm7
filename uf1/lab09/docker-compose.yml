@@ -28,25 +28,15 @@ services:
       x1:
         ipv4_address: 72.28.1.102        
 
-  dhcpserver1:
+  dhcpserver:
     image: joaniznardo/ubuntum7dhcp2
     privileged: true
     mem_limit: 100m
-    hostname: dhcpserver1
-    container_name: dhcpserver1
+    hostname: dhcpserver
+    container_name: dhcpserver
     networks:
       x1:
         ipv4_address: 72.28.1.100
-  
-  dhcpserver2:
-    image: joaniznardo/ubuntum7dhcp2
-    privileged: true
-    mem_limit: 100m
-    hostname: dhcpserver2
-    container_name: dhcpserver2
-    networks:
-      x1:
-        ipv4_address: 72.28.1.99
   
 networks:
   x1:
