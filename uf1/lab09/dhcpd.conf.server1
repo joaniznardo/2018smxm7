@@ -44,9 +44,18 @@ subnet 72.28.0.0 netmask 255.255.0.0 {
   range 72.28.1.55 72.28.1.75;
   option routers 72.28.1.1;
 }
-host client01 {
+host client01_x1 {
   hardware ethernet 02:42:48:1c:01:65;
-  fixed-address 72.28.1.15;
+ fixed-address 72.28.1.15;
+}
+
+subnet 42.28.0.0 netmask 255.255.0.0 {
+  range 42.28.1.55 42.28.1.75;
+  option routers 42.28.1.1;
+}
+host client01_x2 {
+  hardware ethernet 02:42:2a:1c:01:65;
+  fixed-address 42.28.1.15;
 }
 
 ##subnet 192.168.20.0 netmask 255.255.255.0 {

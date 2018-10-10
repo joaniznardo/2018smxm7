@@ -15,14 +15,26 @@ docker exec dhcpserver /bin/bash -c "service isc-dhcp-server restart;service isc
 sleep 2 
 
 #############################
-###### dhcpclient1     ######
+###### dhcpclient1_x1  ######
 #############################
 
-docker exec dhcpclient1 /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"
+docker exec dhcpclient1_x1 /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"
 
 #############################
-###### dhcpclient2     ######
+###### dhcpclient2_x1  ######
 #############################
 
-docker exec dhcpclient2 /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"
+docker exec dhcpclient2_x1 /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"
+
+#############################
+###### dhcpclient1_x2  ######
+#############################
+
+docker exec dhcpclient1_x2 /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"
+
+#############################
+###### dhcpclient2_x2  ######
+#############################
+
+docker exec dhcpclient2_x2 /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"
 
