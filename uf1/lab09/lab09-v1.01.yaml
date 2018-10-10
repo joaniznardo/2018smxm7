@@ -1,0 +1,86 @@
+# go.drawthe.net
+diagram:
+  fill: "white"
+  # y
+  rows: 7
+  # x
+  columns: 6 
+title:
+  author: joan
+  company: jda
+  color: black
+  logoFill: white
+  logoUrl: https://upload.wikimedia.org/wikipedia/commons/b/b3/Wikipedia-logo-v2-en.svg
+  text: LAB09
+  subText: docker-edition
+  type: bar
+  stroke: black
+# Set defaults for icons, groups, connections
+iconDefaults: &iconDefaults
+  color: black
+  fill: white
+  stroke: black
+  iconFamily: cisco
+groupDefaults: &groupDefaults
+  fill: "none"
+  color: black
+  stroke: black
+connectionDefaults: &connectionDefaults
+  color: "black"
+  stroke: "black"
+noteDefaults: &noteDefaults
+  color: black
+  fill: white
+  stroke: black
+  xAlign: center
+  yAlign: center
+# Add the icons
+icons:
+  R1: {<<: *iconDefaults, icon: router, x: 0, y: 6}
+  sw1: {<<: *iconDefaults, icon: workgroupswitch, x: "+1", y: "-1" }
+  dns1: {<<: *iconDefaults, icon: "file_server", x: "+2", y: "-1" }
+#  R2: {<<: *iconDefaults, icon: router, x: "+2"}
+  sw2: {<<: *iconDefaults, icon: workgroupswitch, x: "-2", y: "-1" }
+  client1: {<<: *iconDefaults, icon: workstation, x: "-1" }
+  client2: {<<: *iconDefaults, icon: workstation, y: "-1" }
+  client3: {<<: *iconDefaults, icon: workstation, y: "-1" }
+  sw2b: {<<: *iconDefaults, icon: workgroupswitch, x: "+3", y: "+2" }
+  client1b: {<<: *iconDefaults, icon: workstation, x: "-1" }
+  client2b: {<<: *iconDefaults, icon: workstation, y: "-1" }
+  client3b: {<<: *iconDefaults, icon: workstation, y: "-1" }
+  sw2c: {<<: *iconDefaults, icon: workgroupswitch, x: "+3", y: "+2" }
+  client1c: {<<: *iconDefaults, icon: workstation, x: "-1" }
+  client2c: {<<: *iconDefaults, icon: workstation, y: "-1" }
+  client3c: {<<: *iconDefaults, icon: workstation, y: "-1" }
+# Add the gorups
+## groups:
+##   servers: { <<: *groupDefaults, name: Web Servers, members: [server1, server2, server3] }
+#groups:
+#  X1: { <<: *groupDefaults, name: Xarxa 1, members: [R1, sw1, dns1] }
+#  X2: { <<: *groupDefaults, name: Xarxa 2, members: [R2, sw2, dns1, client1, client2, client3] }
+# Add conneections
+connections:
+  - { <<: *connectionDefaults, endpoints: [R1, sw1] }
+  - { <<: *connectionDefaults, endpoints: [sw1, dns1] }
+  - { <<: *connectionDefaults, endpoints: [dns1, sw2] }
+  - { <<: *connectionDefaults, endpoints: [sw2, client1] }
+  - { <<: *connectionDefaults, endpoints: [sw2, client2] }
+  - { <<: *connectionDefaults, endpoints: [sw2, client3] }
+  - { <<: *connectionDefaults, endpoints: [dns1, sw2b] }
+  - { <<: *connectionDefaults, endpoints: [sw2b, client1b] }
+  - { <<: *connectionDefaults, endpoints: [sw2b, client2b] }
+  - { <<: *connectionDefaults, endpoints: [sw2b, client3b] }
+  - { <<: *connectionDefaults, endpoints: [dns1, sw2c] }
+  - { <<: *connectionDefaults, endpoints: [sw2c, client1c] }
+  - { <<: *connectionDefaults, endpoints: [sw2c, client2c] }
+  - { <<: *connectionDefaults, endpoints: [sw2c, client3c] }
+#  - { <<: *connectionDefaults, endpoints: [sw2, R2] }
+  
+notes:
+  note1:
+    <<: *noteDefaults
+    y: 6
+    x: 4
+    w: 2
+    h: 2
+    text: "#LAB09\n\n#Un server i tres xarxes."
