@@ -13,29 +13,30 @@ services:
       - SYS_ADMIN
     networks:
       x2:
-        ipv4_address: 42.28.1.100
+        ipv4_address: 42.28.1.101
 
   dhcpserver:
-    image: joaniznardo/ubuntum7base
+    image: joaniznardo/ubuntum7dhcp2
     privileged: true
     mem_limit: 100m
     hostname: dhcpserver
     container_name: dhcpserver
     networks:
       x1:
-        ipv4_address: 72.28.1.101
+        ipv4_address: 72.28.1.100
   
   dhcprelay:
-    image: joaniznardo/ubuntum7base
+    image: joaniznardo/ubuntum7dhcp3
+    #image: alpine:3.7
     privileged: true
     mem_limit: 100m
     hostname: dhcprelay
     container_name: dhcprelay
     networks:
       x1:
-        ipv4_address: 72.28.1.102
+        ipv4_address: 72.28.1.99
       x2:
-        ipv4_address: 42.28.1.101
+        ipv4_address: 42.28.1.100
   
 networks:
   x1:
