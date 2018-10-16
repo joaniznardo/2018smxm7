@@ -1,0 +1,9 @@
+# ens assegurem de poder fer els canvis
+user=root
+
+# indiquem en quina interfície (ip) escoltem peticions de dhcp i les enviem a la ip del servidor 
+## correcte
+dhcp-relay=22.28.1.100,42.28.1.120
+
+# deshabilitar el servidor dns de dnsmasq
+port=0
