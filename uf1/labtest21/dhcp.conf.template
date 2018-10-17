@@ -1,0 +1,18 @@
+# ens assegurem de poder fer els canvis
+user=root
+
+dhcp-authoritative
+dhcp-sequential-ip
+log-dhcp
+
+
+# assignem un rang d'ips durant una durada
+dhcp-range=x1,72.28.1.50,72.28.1.80,255.255.255.0,5m
+dhcp-range=x2,42.28.1.50,42.28.1.80,255.255.255.0,5m
+dhcp-range=x3,12.28.1.50,12.28.1.80,255.255.255.0,5m
+dhcp-option=x1,option:router,72.28.1.7
+dhcp-option=x2,option:router,42.28.1.1
+dhcp-option=x3,option:router,12.28.1.1
+# deshabilitar el servidor dns de dnsmasq
+port=0
+dhcp-host=02:42:0c:1c:01:65,12.28.1.21,client-x3-nounom
