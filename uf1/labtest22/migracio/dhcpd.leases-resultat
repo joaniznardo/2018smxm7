@@ -1,0 +1,55 @@
+# The format of this file is documented in the dhcpd.leases(5) manual page.
+# This lease file was written by isc-dhcp-4.2.4
+
+server-duid "\000\001\000\001#a\244\316\002BH\034\001d";
+
+lease 72.28.1.55 {
+  starts 2 2018/10/23 09:22:30;
+  ends 2 2018/10/23 09:32:30;
+  cltt 2 2018/10/23 09:22:30;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:01:65;
+  client-hostname "dhcpclientx1";
+}
+lease 72.28.1.55 {
+  starts 2 2018/10/23 09:22:30;
+  ends 2 2018/10/23 09:32:30;
+  cltt 2 2018/10/23 09:22:30;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:01:65;
+  client-hostname "dhcpclientx1";
+}
+lease 72.28.1.55 {
+  starts 2 2018/10/23 09:22:30;
+  ends 2 2018/10/23 09:32:30;
+  cltt 2 2018/10/23 09:22:30;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:01:65;
+  client-hostname "dhcpclientx1";
+}
+lease 12.28.1.55 {
+  starts 2 2018/10/23 09:22:30;
+  ends 2 2018/10/23 09:32:30;
+  cltt 2 2018/10/23 09:22:30;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:0c:1c:01:65;
+  client-hostname "dhcpclientx3";
+}
+lease 42.28.1.55 {
+  starts 2 2018/10/23 09:22:30;
+  ends 2 2018/10/23 09:32:30;
+  cltt 2 2018/10/23 09:22:30;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:2a:1c:01:65;
+  client-hostname "dhcpclientx2";
+}

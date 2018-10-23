@@ -12,8 +12,8 @@ sleep 2
 docker cp isc-dhcp-server.server1 dhcpserver:/etc/default/isc-dhcp-server
 docker cp dhcpd.conf.server1 dhcpserver:/etc/dhcp/dhcpd.conf
 # fer que el nostre server puga arribar a les xarxes que no coneix"
-docker exec dhcpserver /bin/bash -c "route add -net 42.28.0.0 netmask 255.255.0.0 dev eth0"
-docker exec dhcpserver /bin/bash -c "route add -net 12.28.0.0 netmask 255.255.0.0 dev eth0"
+docker exec dhcpserver /bin/bash -c "route add -net 42.28.1.0 netmask 255.255.255.0 dev eth0"
+docker exec dhcpserver /bin/bash -c "route add -net 12.28.1.0 netmask 255.255.255.0 dev eth0"
 #@@ docker exec dhcpserver /bin/bash -c "service dnsmasq restart;service dnsmasq status"
 docker exec dhcpserver /bin/bash -c "service isc-dhcp-server restart;service isc-dhcp-server status"
 sleep 1 
@@ -96,4 +96,5 @@ docker exec dhcpclientx3 /bin/bash -c "ping -c 3 www.google.com"
 echo "======================================"
 echo "dhcpserver: ips assignades després dels clients"
 docker exec dhcpserver /bin/bash -c "cat /var/lib/dhcp/dhcpd.leases"
+docker cp dhcpserver:/var/lib/dhcp/dhcpd.leases dhcpd.leases-resultat
 
