@@ -1,0 +1,117 @@
+version: '2'							version: '2'
+
+# la xarxa 1 farà servir les adreces 72.28.1.0/16		# la xarxa 1 farà servir les adreces 72.28.1.0/16
+# la xarxa 2 farà servir les adreces 42.28.1.0/16		# la xarxa 2 farà servir les adreces 42.28.1.0/16
+# la xarxa 3 farà servir les adreces 12.28.1.0/16		# la xarxa 3 farà servir les adreces 12.28.1.0/16
+ 								 
+
+services:							services:
+  								  
+  dhcpclientx2:							  dhcpclientx2:
+    image: joaniznardo/ubuntum7base				    image: joaniznardo/ubuntum7base
+    privileged: true						    privileged: true
+    mem_limit: 100m						    mem_limit: 100m
+    hostname: dhcpclientx2					    hostname: dhcpclientx2
+    container_name: dhcpclientx2				    container_name: dhcpclientx2
+    cap_add:							    cap_add:
+      - NET_ADMIN						      - NET_ADMIN
+      - SYS_ADMIN						      - SYS_ADMIN
+    networks:							    networks:
+      x2:							      x2:
+        ipv4_address: 42.28.1.101				        ipv4_address: 42.28.1.101
+
+  dhcpclientx3:							  dhcpclientx3:
+    image: joaniznardo/ubuntum7base				    image: joaniznardo/ubuntum7base
+    privileged: true						    privileged: true
+    mem_limit: 100m						    mem_limit: 100m
+    hostname: dhcpclientx3					    hostname: dhcpclientx3
+    container_name: dhcpclientx3				    container_name: dhcpclientx3
+    cap_add:							    cap_add:
+      - NET_ADMIN						      - NET_ADMIN
+      - SYS_ADMIN						      - SYS_ADMIN
+    networks:							    networks:
+      x3:							      x3:
+        ipv4_address: 12.28.1.101				        ipv4_address: 12.28.1.101
+
+  dhcpclientx1:							  dhcpclientx1:
+    image: joaniznardo/ubuntum7base				    image: joaniznardo/ubuntum7base
+    privileged: true						    privileged: true
+    mem_limit: 100m						    mem_limit: 100m
+    hostname: dhcpclientx1					    hostname: dhcpclientx1
+    container_name: dhcpclientx1				    container_name: dhcpclientx1
+    cap_add:							    cap_add:
+      - NET_ADMIN						      - NET_ADMIN
+      - SYS_ADMIN						      - SYS_ADMIN
+    networks:							    networks:
+      x1:							      x1:
+        ipv4_address: 72.28.1.101				        ipv4_address: 72.28.1.101
+
+  dhcpserver:							  dhcpserver:
+    image: joaniznardo/ubuntum7dhcp1			      |	    image: joaniznardo/ubuntum7dhcp2
+    privileged: true						    privileged: true
+    mem_limit: 100m						    mem_limit: 100m
+    hostname: dhcpserver					    hostname: dhcpserver
+    container_name: dhcpserver					    container_name: dhcpserver
+    networks:							    networks:
+      x1:							      x1:
+        ipv4_address: 72.28.1.100				        ipv4_address: 72.28.1.100
+  								  
+  dhcprelayx2:							  dhcprelayx2:
+    image: joaniznardo/ubuntum7dhcp1			      |	    image: joaniznardo/ubuntum7dhcp3
+    privileged: true						    privileged: true
+    mem_limit: 100m						    mem_limit: 100m
+    hostname: dhcprelayx2					    hostname: dhcprelayx2
+    container_name: dhcprelayx2					    container_name: dhcprelayx2
+    networks:							    networks:
+      x1:							      x1:
+        ipv4_address: 72.28.1.99 				        ipv4_address: 72.28.1.99 
+      x2:							      x2:
+        ipv4_address: 42.28.1.100				        ipv4_address: 42.28.1.100
+  								  
+  dhcprelayx3:							  dhcprelayx3:
+    image: joaniznardo/ubuntum7dhcp1			      |	    image: joaniznardo/ubuntum7dhcp3
+    privileged: true						    privileged: true
+    mem_limit: 100m						    mem_limit: 100m
+    hostname: dhcprelayx3					    hostname: dhcprelayx3
+    container_name: dhcprelayx3					    container_name: dhcprelayx3
+    networks:							    networks:
+      x1:							      x1:
+        ipv4_address: 72.28.1.98 				        ipv4_address: 72.28.1.98 
+      x3:							      x3:
+        ipv4_address: 12.28.1.100				        ipv4_address: 12.28.1.100
+  								  
+networks:							networks:
+  x1:								  x1:
+    ipam:							    ipam:
+      driver: default						      driver: default
+      config:							      config:
+        - subnet: 72.28.0.0/16					        - subnet: 72.28.0.0/16
+          ip_range: 72.28.1.0/30				          ip_range: 72.28.1.0/30
+          gateway: 72.28.1.1					          gateway: 72.28.1.1
+          aux_addresses:					          aux_addresses:
+            host1: 72.28.1.2					            host1: 72.28.1.2
+            host2: 72.28.1.3					            host2: 72.28.1.3
+            host0: 72.28.1.0					            host0: 72.28.1.0
+
+  x2:								  x2:
+    ipam:							    ipam:
+      driver: default						      driver: default
+      config:							      config:
+        - subnet: 42.28.0.0/16					        - subnet: 42.28.0.0/16
+          ip_range: 42.28.1.0/30				          ip_range: 42.28.1.0/30
+          gateway: 42.28.1.1					          gateway: 42.28.1.1
+          aux_addresses:					          aux_addresses:
+            host1: 42.28.1.2					            host1: 42.28.1.2
+            host2: 42.28.1.3					            host2: 42.28.1.3
+            host0: 42.28.1.0					            host0: 42.28.1.0
+  x3:								  x3:
+    ipam:							    ipam:
+      driver: default						      driver: default
+      config:							      config:
+        - subnet: 12.28.0.0/16					        - subnet: 12.28.0.0/16
+          ip_range: 12.28.1.0/30				          ip_range: 12.28.1.0/30
+          gateway: 12.28.1.1					          gateway: 12.28.1.1
+          aux_addresses:					          aux_addresses:
+            host1: 12.28.1.2					            host1: 12.28.1.2
+            host2: 12.28.1.3					            host2: 12.28.1.3
+            host0: 12.28.1.0					            host0: 12.28.1.0

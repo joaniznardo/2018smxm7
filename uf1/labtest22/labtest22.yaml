@@ -1,0 +1,78 @@
+# go.drawthe.net
+diagram:
+  fill: "white"
+  # y
+  rows: 7
+  # x
+  columns: 8
+title:
+  author: joan
+  company: jda
+  color: black
+  logoFill: white
+  logoUrl: https://upload.wikimedia.org/wikipedia/commons/b/b3/Wikipedia-logo-v2-en.svg
+  text: LABTEST22
+  subText: docker-edition
+  type: bar
+  stroke: black
+# Set defaults for icons, groups, connections
+iconDefaults: &iconDefaults
+  color: black
+  fill: white
+  stroke: black
+  iconFamily: cisco
+groupDefaults: &groupDefaults
+  fill: "none"
+  color: black
+  stroke: black
+connectionDefaults: &connectionDefaults
+  color: "black"
+  stroke: "black"
+noteDefaults: &noteDefaults
+  color: black
+  fill: white
+  stroke: black
+  xAlign: center
+  yAlign: center
+# Add the icons
+icons:
+  r1: {<<: *iconDefaults, icon: "router", x: 1, y: 4}
+  sw1: {<<: *iconDefaults, icon: "workgroupswitch", x: "+1", y: "-1" } ## craso error !!
+  dhcp1: {<<: *iconDefaults, icon: "file_server", y: "+1" }
+  clientx1: {<<: *iconDefaults, icon: "workstation", y: "-2" }
+  relayx2: {<<: *iconDefaults, icon: "file_server", x: "+1",  y: "+2" }
+  relayx3: {<<: *iconDefaults, icon: "file_server", y: "-2" }
+  R2: {<<: *iconDefaults, icon: "router", y: "+3"}
+  R3: {<<: *iconDefaults, icon: "router", y: "-4"}
+  sw3: {<<: *iconDefaults, icon: "workgroupswitch", x: "+1", y: "+1" }
+  sw2: {<<: *iconDefaults, icon: "workgroupswitch",  y: "+2" }
+  clientx2: {<<: *iconDefaults, icon: "workstation", x: "+1" }
+  clientx3: {<<: *iconDefaults, icon: "workstation", y: "-2" }
+# Add the gorups
+## groups:
+##   servers: { <<: *groupDefaults, name: Web Servers, members: [server1, server2, server3] }
+#groups:
+#  X1: { <<: *groupDefaults, name: Xarxa 1, members: [R1, sw1, dhcp1] }
+#  X2: { <<: *groupDefaults, name: Xarxa 2, members: [R2, sw2, dhcp1, client1, client2, client3] }
+# Add conneections
+connections:
+  - { <<: *connectionDefaults, endpoints: [r1, sw1] }
+  - { <<: *connectionDefaults, endpoints: [sw1, dhcp1] }
+  - { <<: *connectionDefaults, endpoints: [sw1, clientx1] }
+  - { <<: *connectionDefaults, endpoints: [sw1, relayx2] }
+  - { <<: *connectionDefaults, endpoints: [sw1, relayx3] }
+  - { <<: *connectionDefaults, endpoints: [relayx2, sw2] }
+  - { <<: *connectionDefaults, endpoints: [relayx3, sw3] }
+  - { <<: *connectionDefaults, endpoints: [sw2, clientx2] }
+  - { <<: *connectionDefaults, endpoints: [sw2, R2] }
+  - { <<: *connectionDefaults, endpoints: [sw3, R3] }
+  - { <<: *connectionDefaults, endpoints: [sw3, clientx3] }
+  
+notes:
+  note1:
+    <<: *noteDefaults
+    y: 6
+    x: 6
+    w: 2
+    h: 2
+    text: "#LABTEST22\n\n#Un server \n# dos relays\n# i tres xarxes."

@@ -1,0 +1,100 @@
+#!/bin/bash							#!/bin/bash
+
+docker-compose -f docker-compose.yml up -d			docker-compose -f docker-compose.yml up -d
+sleep 2								sleep 2
+
+
+#############################					#############################
+###### dhcpserver      ######					###### dhcpserver      ######
+#############################					#############################
+
+docker cp dhcp.conf.template  dhcpserver:/etc/dnsmasq.d/dhcp. |	#@@ docker cp dhcp.conf.template  dhcpserver:/etc/dnsmasq.d/d
+							      >	docker cp isc-dhcp-server.server1 dhcpserver:/etc/default/isc
+							      >	docker cp dhcpd.conf.server1 dhcpserver:/etc/dhcp/dhcpd.conf
+# fer que el nostre server puga arribar a les xarxes que no c	# fer que el nostre server puga arribar a les xarxes que no c
+docker exec dhcpserver /bin/bash -c "route add -net 42.28.0.0	docker exec dhcpserver /bin/bash -c "route add -net 42.28.0.0
+docker exec dhcpserver /bin/bash -c "route add -net 12.28.0.0	docker exec dhcpserver /bin/bash -c "route add -net 12.28.0.0
+docker exec dhcpserver /bin/bash -c "service dnsmasq restart; |	#@@ docker exec dhcpserver /bin/bash -c "service dnsmasq rest
+							      >	docker exec dhcpserver /bin/bash -c "service isc-dhcp-server 
+sleep 1 							sleep 1 
+
+#############################					#############################
+###### dhcprelayx2     ######					###### dhcprelayx2     ######
+#############################					#############################
+
+docker cp dhcp.conf.template.relayx2 dhcprelayx2:/etc/dnsmasq |	#@@ docker cp dhcp.conf.template.relayx2 dhcprelayx2:/etc/dns
+docker exec dhcprelayx2 /bin/bash -c "service dnsmasq restart |	#@@ docker exec dhcprelayx2 /bin/bash -c "service dnsmasq res
+							      >	#mantenim la següent per compatibilitat, però no fem servir e
+							      >	docker cp isc-dhcp-relayx2 dhcprelayx2:/etc/default/isc-dhcp-
+							      >	docker exec dhcprelayx2 /bin/bash -c "/usr/sbin/dhcrelay -4 -
+							      >
+sleep 1 							sleep 1 
+
+#############################					#############################
+###### dhcprelayx3     ######					###### dhcprelayx3     ######
+#############################					#############################
+
+docker cp dhcp.conf.template.relayx3 dhcprelayx3:/etc/dnsmasq |	#@@docker cp dhcp.conf.template.relayx3 dhcprelayx3:/etc/dnsm
+docker exec dhcprelayx3 /bin/bash -c "service dnsmasq restart |	#@@docker exec dhcprelayx3 /bin/bash -c "service dnsmasq rest
+							      >	#mantenim la següent per compatibilitat, però no fem servir e
+							      >	docker cp isc-dhcp-relayx3 dhcprelayx3:/etc/default/isc-dhcp-
+							      >	docker exec dhcprelayx3 /bin/bash -c "/usr/sbin/dhcrelay -4 -
+sleep 1 							sleep 1 
+
+#############################					#############################
+## renovació de la ip del client X1				## renovació de la ip del client X1
+#############################					#############################
+
+# -- alliberem la ip assignada per docker (en realitat nosalt	# -- alliberem la ip assignada per docker (en realitat nosalt
+docker exec dhcpclientx1 /bin/bash -c "ip addr flush eth0"	docker exec dhcpclientx1 /bin/bash -c "ip addr flush eth0"
+
+# -- demanem una ip "a qui pugui escoltar" (servidor de dhcp,	# -- demanem una ip "a qui pugui escoltar" (servidor de dhcp,
+docker exec dhcpclientx1 /bin/bash -c "dhclient eth0"	      |	docker exec dhcpclientx1 /bin/bash -c "dhclient eth0" &
+
+#############################					#############################
+## renovació de la ip del client X2				## renovació de la ip del client X2
+#############################					#############################
+
+# -- alliberem la ip assignada per docker (en realitat nosalt	# -- alliberem la ip assignada per docker (en realitat nosalt
+docker exec dhcpclientx2 /bin/bash -c "ip addr flush eth0"	docker exec dhcpclientx2 /bin/bash -c "ip addr flush eth0"
+
+# -- demanem una ip "a qui pugui escoltar" (servidor de dhcp,	# -- demanem una ip "a qui pugui escoltar" (servidor de dhcp,
+docker exec dhcpclientx2 /bin/bash -c "dhclient eth0"	      |	docker exec dhcpclientx2 /bin/bash -c "dhclient eth0" &
+
+#############################					#############################
+## renovació de la ip del client X3				## renovació de la ip del client X3
+#############################					#############################
+
+# -- alliberem la ip assignada per docker (en realitat nosalt	# -- alliberem la ip assignada per docker (en realitat nosalt
+docker exec dhcpclientx3 /bin/bash -c "ip addr flush eth0"	docker exec dhcpclientx3 /bin/bash -c "ip addr flush eth0"
+
+# -- demanem una ip "a qui pugui escoltar" (servidor de dhcp,	# -- demanem una ip "a qui pugui escoltar" (servidor de dhcp,
+docker exec dhcpclientx3 /bin/bash -c "dhclient eth0"	      |	docker exec dhcpclientx3 /bin/bash -c "dhclient eth0" &
+							      <
+
+							      >	sleep 2
+#############################					#############################
+###### resultats ---   ######					###### resultats ---   ######
+#############################					#############################
+echo "======================================"			echo "======================================"
+echo "client-x1: "  						echo "client-x1: "  
+docker exec dhcpclientx1 /bin/bash -c "ip a"			docker exec dhcpclientx1 /bin/bash -c "ip a"
+docker exec dhcpclientx1 /bin/bash -c "ip route"		docker exec dhcpclientx1 /bin/bash -c "ip route"
+docker exec dhcpclientx1 /bin/bash -c "hostname"		docker exec dhcpclientx1 /bin/bash -c "hostname"
+							      >	docker exec dhcpclientx1 /bin/bash -c "ping -c 3 www.google.c
+echo "======================================"			echo "======================================"
+echo "client-x2: " 						echo "client-x2: " 
+docker exec dhcpclientx2 /bin/bash -c "ip a"			docker exec dhcpclientx2 /bin/bash -c "ip a"
+docker exec dhcpclientx2 /bin/bash -c "ip route"		docker exec dhcpclientx2 /bin/bash -c "ip route"
+docker exec dhcpclientx2 /bin/bash -c "hostname"		docker exec dhcpclientx2 /bin/bash -c "hostname"
+							      >	docker exec dhcpclientx2 /bin/bash -c "ping -c 3 www.google.c
+echo "======================================"			echo "======================================"
+echo "client-x3: "						echo "client-x3: "
+docker exec dhcpclientx3 /bin/bash -c "ip a"			docker exec dhcpclientx3 /bin/bash -c "ip a"
+docker exec dhcpclientx3 /bin/bash -c "ip route"		docker exec dhcpclientx3 /bin/bash -c "ip route"
+docker exec dhcpclientx3 /bin/bash -c "hostname"		docker exec dhcpclientx3 /bin/bash -c "hostname"
+							      >	docker exec dhcpclientx3 /bin/bash -c "ping -c 3 www.google.c
+echo "======================================"			echo "======================================"
+echo "dhcpserver: ips assignades després dels clients"		echo "dhcpserver: ips assignades després dels clients"
+docker exec dhcpserver /bin/bash -c "cat /var/lib/misc/dnsmas |	docker exec dhcpserver /bin/bash -c "cat /var/lib/dhcp/dhcpd.
+
