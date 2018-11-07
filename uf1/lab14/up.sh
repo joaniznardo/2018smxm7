@@ -7,11 +7,19 @@ sleep 2
 
 
 #############################
-###### dhcpserver      ######
+###### dhcpserver01    ######
 #############################
 
-docker cp dhcp.conf.template  dhcpdnsserver:/etc/dnsmasq.d/dhcp.conf
-docker exec dhcpdnsserver /bin/bash -c "service dnsmasq restart;service dnsmasq status"
+docker cp 000_dns_01.conf  dnsserver01:/etc/dnsmasq.d/000_dns_01.conf
+docker exec dnsserver01 /bin/bash -c "service dnsmasq restart;service dnsmasq status"
+sleep 1 
+
+#############################
+###### dhcpserver02    ######
+#############################
+
+docker cp 000_dns_02.conf  dnsserver02:/etc/dnsmasq.d/000_dns_02.conf
+docker exec dnsserver02 /bin/bash -c "service dnsmasq restart;service dnsmasq status"
 sleep 1 
 
 #############################

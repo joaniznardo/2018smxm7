@@ -3,7 +3,8 @@ version: '2'
 services:
   
   dhcpclient01:
-    image: joaniznardo/ubuntu1804m7base
+#    image: joaniznardo/ubuntu1804m7base
+    image: joaniznardo/ubuntum7base
     privileged: true
     mem_limit: 100m
     hostname: dhcpclient01
@@ -41,18 +42,31 @@ services:
       x1:
         ipv4_address: 72.28.1.103
     
-  dhcpdnsserver:
+  dnsserver01:
     image: joaniznardo/ubuntum7dhcp1
     privileged: true
     mem_limit: 100m
-    hostname: dhcpdnsserver
-    container_name: dhcpdnsserver
+    hostname: dnsserver01
+    container_name: dnsserver01
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
     networks:
       x1:
         ipv4_address: 72.28.1.100
+
+  dnsserver02:
+    image: joaniznardo/ubuntum7dhcp1
+    privileged: true
+    mem_limit: 100m
+    hostname: dnsserver02
+    container_name: dnsserver02
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    networks:
+      x1:
+        ipv4_address: 72.28.1.99
   
 networks:
   x1:

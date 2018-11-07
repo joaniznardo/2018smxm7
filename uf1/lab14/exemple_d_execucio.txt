@@ -1,0 +1,49 @@
+[joan@asus lab14]$ docker-compose ps
+    Name                  Command               State   Ports
+-------------------------------------------------------------
+dhcpclient01   /bin/sh -c /etc/init.d/ssh ...   Up           
+dhcpclient02   /bin/sh -c /etc/init.d/ssh ...   Up           
+dhcpclient03   /bin/sh -c /etc/init.d/ssh ...   Up           
+dnsserver01    /bin/sh -c /etc/init.d/ssh ...   Up           
+dnsserver02    /bin/sh -c /etc/init.d/ssh ...   Up           
+
+[joan@asus lab14]$ docker exec dhcpclient01 cat /etc/resolv.conf
+domain lab14
+serach lab14
+nameserver 72.28.1.100
+nameserver 72.28.1.99
+
+[joan@asus lab14]$ docker exec dhcpclient01 ping -c 1 client01
+PING client01.lab14 (72.28.1.101) 56(84) bytes of data.
+64 bytes from dhcpclient01 (72.28.1.101): icmp_seq=1 ttl=64 time=0.069 ms
+
+--- client01.lab14 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.069/0.069/0.069/0.000 ms
+
+[joan@asus lab14]$ docker stop dnsserver01 
+dnsserver01
+
+[joan@asus lab14]$ docker exec dhcpclient01 ping -c 1 client01
+PING client01.lab14 (72.28.1.101) 56(84) bytes of data.
+64 bytes from dhcpclient01 (72.28.1.101): icmp_seq=1 ttl=64 time=0.078 ms
+
+--- client01.lab14 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.078/0.078/0.078/0.000 ms
+
+[joan@asus lab14]$ docker exec dhcpclient01 ping -c 1 dnsserver01
+PING dnsserver01.lab14 (72.28.1.100) 56(84) bytes of data.
+From dhcpclient01 (72.28.1.101) icmp_seq=1 Destination Host Unreachable
+
+--- dnsserver01.lab14 ping statistics ---
+1 packets transmitted, 0 received, +1 errors, 100% packet loss, time 0ms
+
+[joan@asus lab14]$ docker exec dhcpclient01 ping -c 1 dnsserver02
+PING dnsserver02.lab14 (72.28.1.99) 56(84) bytes of data.
+64 bytes from dnsserver02.lab14 (72.28.1.99): icmp_seq=1 ttl=64 time=0.484 ms
+
+--- dnsserver02.lab14 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.484/0.484/0.484/0.000 ms
+
