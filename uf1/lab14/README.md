@@ -1,5 +1,5 @@
 # lab12
-## servidor dns dnsmasq - una única xarxa - creació d'un domini i assignació de clients - assignació estàtica (no dhcp)
+## servidor dns dnsmasq - una única xarxa - gestió d'un domini amb 2 servidors NO COORDINATS(sincronització manual): sols per demostrar que se pot continuar funcionant si cau un dels servidors. 
 
 ## molt important
 
