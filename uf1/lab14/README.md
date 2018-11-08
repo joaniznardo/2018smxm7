@@ -1,4 +1,4 @@
-# lab12
+# lab14
 ## servidor dns dnsmasq - una única xarxa - gestió d'un domini amb 2 servidors NO COORDINATS(sincronització manual): sols per demostrar que se pot continuar funcionant si cau un dels servidors. 
 
 ## molt important
