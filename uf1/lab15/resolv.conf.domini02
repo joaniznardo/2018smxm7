@@ -1,0 +1,4 @@
+domain lab15b
+search lab15b
+nameserver 72.28.1.99
+nameserver 72.28.1.100
