@@ -1,5 +1,8 @@
-# lab18
-## servidor dns bind - una única xarxa - creació d'un servidor de domini autoritari (de referència) amb un servidor de recolzament.
+# lab19
+## servidor dns bind - dues xarxes - creació d'un servidor de domini autoritari (de referència) amb un servidor de recolzament.
+Per simplificar s'ha afegit els servidors a totes dues xarxes. 
+La demo realitza pings per nom entre clients de les dues xarxes abans i després d'aturar el primer servidor.
+
 
 ## molt important
 

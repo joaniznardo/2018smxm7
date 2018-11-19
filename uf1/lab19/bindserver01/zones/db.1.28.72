@@ -1,0 +1,27 @@
+$TTL 2d
+; default TTL for zone
+$ORIGIN 1.28.72.in-addr.arpa. ; base domain-name
+
+; Start of Authority record defining the key characteristics
+
+;name ttl class rr name-server e-mail sn refresh retry expiry nxdomain
+;@ 		IN		SOA		dns1.jiznardo.org. admin.jiznardo.org. 2018110600 3h 15m 3w 3h
+@       IN      SOA     dns1.jiznardo.org. admin.jiznardo.org. (
+         2018110600     ; Serial
+		 3h     ; Refresh
+                15m     ; Retry
+                 3w     ; Expire
+                 3h )   ; Negative Cache TTL
+;
+; name servers - NS records
+     IN      NS      dns1.jiznardo.org. 
+     IN      NS      dns2.jiznardo.org.
+
+; name servers - A records
+100 IN PTR 					dns1.jiznardo.org. ; 
+98  IN PTR 					dns2.jiznardo.org. ;
+
+; 10.128.0.0/16 - A records
+101 IN PTR 					client01.jiznardo.org. ;
+102 IN PTR 					client02.jiznardo.org. ;
+
