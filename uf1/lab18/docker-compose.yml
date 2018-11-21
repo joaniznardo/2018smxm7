@@ -41,19 +41,6 @@ services:
       x1:
         ipv4_address: 72.28.1.103
     
-  dnsresolver:   
-    image: joaniznardo/ubuntum7dhcp1
-    privileged: true
-    mem_limit: 100m
-    hostname: dnsresolver  
-    container_name: dnsresolver  
-    cap_add:
-      - NET_ADMIN
-      - SYS_ADMIN
-    networks:
-      x1:
-        ipv4_address: 72.28.1.99 
-  
   dnsserver:
     image: joaniznardo/ubuntum7dnsbind
     privileged: true

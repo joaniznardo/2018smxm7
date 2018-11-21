@@ -5,15 +5,6 @@
 docker-compose -f docker-compose.yml up -d
 sleep 2
 
-
-#############################
-###### resolver        ######
-#############################
-
-docker cp 000_dns_resolver.conf dnsresolver:/etc/dnsmasq.d/dhcp.conf
-docker exec dnsresolver /bin/bash -c "service dnsmasq restart;service dnsmasq status"
-sleep 1 
-
 #############################
 ###### dnserver - primari ###
 #############################
