@@ -1,0 +1,8 @@
+- crear nova xarxa
+- posar interficies als 3 elements: router, dnsserver, dnsserver2
+- afegir nova zona directa i inversa al named.conf.local
+- afegir noves ips al named.conf.options
+- crear els fitxers de zona
+- crear nous containers
+- crear nou resolv.conf3
+- incorporar el resolv.conf3 als nous containers a up i fer ping a ells
