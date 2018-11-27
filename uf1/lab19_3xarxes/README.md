@@ -1,7 +1,7 @@
-# lab19
-## servidor dns bind - dues xarxes - creació d'un servidor de domini autoritari (de referència) amb un servidor de recolzament.
-Per simplificar s'ha afegit els servidors a totes dues xarxes. 
-La demo realitza pings per nom entre clients de les dues xarxes abans i després d'aturar el primer servidor.
+# lab19_3xarxes
+## servidor dns bind - tres xarxes - creació d'un servidor de domini autoritari (de referència) amb un servidor de recolzament.
+Per simplificar s'ha afegit els servidors a totes tres xarxes. 
+La demo realitza pings per nom entre clients de les tres xarxes abans i després d'aturar el primer servidor.
 
 
 ## molt important
