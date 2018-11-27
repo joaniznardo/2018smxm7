@@ -1,0 +1,6 @@
+domain demo2.lab19
+search demo2.lab19
+nameserver 12.28.1.100
+nameserver 12.28.1.98
+# per evitar esperar a que conteste un servidor que està aturat, afegim la següent opció
+options timeout:1 attempts:1 rotate

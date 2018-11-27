@@ -1,0 +1,28 @@
+; IPv4 zone file for lab22.demo.lab19
+$TTL 2d
+;$TTL    604800 ;en segons
+; default TTL for zone
+$ORIGIN demo.lab19. ; base domain-name
+
+; Start of Authority record defining the key characteristics
+
+;name ttl class rr name-server e-mail sn refresh retry expiry nxdomain
+;@ 		IN		SOA		dns1.demo.lab19. admin.demo.lab19. 2017110600 3h 15m 3w 3h
+@       IN      SOA     dns1.demo.lab19. admin.demo.lab19. (
+         2018110600     ; Serial
+				 3h     ; Refresh
+                15m     ; Retry
+                 3w     ; Expire
+                 3h )   ; Negative Cache TTL
+;
+; name servers - NS records
+     IN      NS      dns1.demo.lab19. 
+     IN      NS      dns2.demo.lab19.
+
+; name servers - A records
+dns1.demo.lab19.          IN      A       42.28.1.100
+dns2.demo.lab19.          IN      A       42.28.1.98
+
+; 10.128.0.0/16 - A records
+client01.demo.lab19.        IN      A      42.28.1.101
+client02.demo.lab19.        IN      A      42.28.1.102
