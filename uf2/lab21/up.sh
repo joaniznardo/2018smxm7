@@ -11,8 +11,8 @@ sleep 2
 #############################
 
 #docker cp dhcp.conf.template  dhcpdnsserver:/etc/dnsmasq.d/dhcp.conf
-#docker exec ftpserver /bin/bash -c "service proftpd restart;service proftpd status"
-#sleep 1 
+docker exec ftpserver /bin/bash -c "service proftpd restart;service proftpd status"
+sleep 1 
 
 #############################
 ###### ftpclient       ######
