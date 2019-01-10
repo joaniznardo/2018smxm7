@@ -1,0 +1,17 @@
+### --
+##  -- fitxer de configuracio (virtual_users.conf a /etc/proftpd/conf.d )
+### --
+# no permetre que els comptes retrocedesquen ("pugen") en l'arbre de directoris
+DefaultRoot ~
+RequireValidShell off
+
+# fitxer associat per als comptes virtuals
+AuthUserFile /etc/proftpd/ftpd.passwd
+# no crearem grups per compartir info entre els comptes virtuals
+## AuthGroupFile /etc/proftpd/ftpd.group
+
+# Sols permetre l'acces amb comptes virtuals 
+AuthOrder mod_auth_file.c 
+# si vulguerem que tambe els comptes del sistema ho feren...
+## AuthOrder mod_auth_file.c mod_auth_unix.c
+
