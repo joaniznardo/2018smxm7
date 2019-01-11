@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # gnome edition
-## -- tabs not always work
-## docker-compose ps | tail -n+2 | awk '{print $1}' | xargs -n 1 -I {} gnome-terminal --tab --title {} -e 'bash -c "docker exec -it {} bash "'
+#docker-compose ps | tail -n+2 | awk '{print $1}' | xargs -n 1 -I {} gnome-terminal --tab --title {} -e 'bash -c "docker exec -it {} bash "'
 docker-compose ps | tail -n+2 | awk '{print $1}' | xargs -n 1 -I {} gnome-terminal --title {} -e 'bash -c "docker exec -it {} bash "'
 
 #  conservative edition (uncomment (try) this if above one fails)
