@@ -1,0 +1,9 @@
+# /etc/default/tftpd-hpa
+TFTP_USERNAME="tftp"
+TFTP_DIRECTORY="/var/lib/tftpboot"
+TFTP_ADDRESS=":69"
+### --
+##  si volem que el servidor de tftp siga d'escriptura necessitem afegir l'opció --create
+### --
+#TFTP_OPTIONS="--secure"
+TFTP_OPTIONS="--secure --create"

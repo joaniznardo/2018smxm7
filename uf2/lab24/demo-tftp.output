@@ -1,0 +1,6 @@
+root@tftpclient01:/tmp# tftp tftpserver
+tftp> put 
+(file) test.txt
+tftp> put test.txt PvDC5vHTRF-incoming/test-incoming.txt
+Sent 6 bytes in 0.0 seconds
+tftp> 
