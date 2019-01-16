@@ -1,0 +1,5 @@
+# El procés per habilitar el servidor de TFTP, amb dues carpetes, una d'entrada i una de sortida, consta de 4 etapes:
+1) Configurar el servidor de TFTP
+2) Reiniciar el servidor 
+3) Crear les dues carpetes
+4) assignar els permissos correctes a les carpetes i canviar el propietari de la carpeta de sortida

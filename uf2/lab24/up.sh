@@ -18,23 +18,33 @@ export DIR_TFTP=/var/lib/tftpboot/
 #############################
 ###### tftpserver      ######
 #############################
-
+### -- 
+##  -- etapa 1 - configurar el servei de TFTP
+### -- 
 # injectem la configuració per permetre l'escriptura al server
 docker cp $CONFIG_TFTPD tftpserver:/tmp
 docker exec tftpserver cp /tmp/$CONFIG_TFTPD  /etc/default/tftpd-hpa
-# reinici del servei
+### -- 
+##  -- etapa 2 - reiniciar el servei de TFTP
+### -- 
 docker exec tftpserver /bin/bash -c "service tftpd-hpa restart;service tftpd-hpa status"
 
 ### -- 
-##  -- creacio dels directoris
+##  -- etapa 3 - creacio dels directoris
 ### -- 
 #docker exec tftpserver /bin/bash -c "cd /var/lib/tftpboot && mktemp -d XXXXXXXXXX --suffix=-incoming && chown tftp:tftp $(ls -d *incoming) && chmod 777 $(ls -d *incoming)"
 docker exec tftpserver /bin/bash -c "cd /var/lib/tftpboot && mktemp -d XXXXXXXXXX --suffix=-incoming "
 export DIR_INT=`docker exec tftpserver /bin/bash -c "cd /var/lib/tftpboot && ls -d *inc*"`
-echo "DIR_INT te el valor $DIR_INT"
-echo "DIR_INT=$DIR_INT" | tee env_vars.file
+
+## echo "DIR_INT te el valor $DIR_INT"
+##echo "DIR_INT=$DIR_INT" | tee env_vars.file
+
 ##docker exec tftpserver --env-file=env_cars.file /bin/bash -c "chown tftp:tftp $DIR_INT"
 ##docker exec tftpserver -eDIR_INT=$DIR_INT2 /bin/bash -c "chown tftp:tftp $DIR_INT"
+
+### -- 
+##  -- etapa 4 - assignació de permissos correctes i canvi de propietari
+### -- 
 docker exec tftpserver  /bin/bash -c "chown tftp:tftp $DIR_TFTP$DIR_INT"
 docker exec tftpserver  /bin/bash -c "chmod 777 $DIR_TFTP$DIR_INT"
 docker exec tftpserver /bin/bash -c "cd /var/lib/tftpboot && mktemp -d XXXXXXXXXX --suffix=-outgoing"
