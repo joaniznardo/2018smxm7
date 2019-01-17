@@ -46,7 +46,7 @@ export DIR_INT=`docker exec tftpserver /bin/bash -c "cd /var/lib/tftpboot && ls 
 ##  -- etapa 4 - assignació de permissos correctes i canvi de propietari
 ### -- 
 docker exec tftpserver  /bin/bash -c "chown tftp:tftp $DIR_TFTP$DIR_INT"
-docker exec tftpserver  /bin/bash -c "chmod 777 $DIR_TFTP$DIR_INT"
+docker exec tftpserver  /bin/bash -c "chmod 700 $DIR_TFTP$DIR_INT"
 docker exec tftpserver /bin/bash -c "cd /var/lib/tftpboot && mktemp -d XXXXXXXXXX --suffix=-outgoing"
 export DIR_OUT=`docker exec tftpserver /bin/bash -c "cd /var/lib/tftpboot && ls -d *out*"`
 docker exec tftpserver  /bin/bash -c "chmod 755 $DIR_TFTP$DIR_OUT"
