@@ -40,5 +40,17 @@ sleep 1
 echo "====== fi de la fase de configuració ==========="
 echo "@@@@== inici de la fae de validació  ==========="
 docker-compose ps
-docker exec ftpclient01 /bin/sh -c "ping -c 2 ftpserver"
+docker exec ftpclient01 /bin/bash -c "ping -c 2 ftpserver"
+docker exec ftpserver /bin/bash -c "nohup tcpdump -i eth0 -w /tmp/dades_rebudes.pcap port \(ftp or ftp-data\) "&
+docker-compose exec ftpserver /bin/bash -c "ls -l /tmp"
+##
+## -- Enviem un fitxer del client al servidor
+## -- Necessitem "confiar" en el servidor (-k) i no comprovem la validesa del certificat (autosignat)
+## -- la transmissió és segura (xifrada) pel port 21
+##
+docker-compose exec ftpclient01 /bin/bash -c "echo 'hola' | tee /tmp/dades.txt"
+docker-compose exec ftpclient01 /bin/bash -c "curl -T /tmp/dades.txt ftp://ubuntu:ubuntu@ftpserver -k --ftp-ssl"
+docker-compose exec ftpserver /bin/bash -c "pkill -sighup tcpdump"
+docker-compose exec ftpserver /bin/bash -c "ls -l /tmp"
+docker-compose exec ftpserver /bin/bash -c "tcpdump -r /tmp/dades_rebudes.pcap "
 echo "@@@@== fi de la fase de validació  ==========="
