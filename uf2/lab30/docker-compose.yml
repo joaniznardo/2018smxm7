@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+  
+  mailserver:
+    image: analogic/poste.io
+    hostname: mailserver
+    container_name: mailserver
+    ports:      
+      - '25:25'
+      - '80:80'
+      - '443:443'
+      - '110:110'
+      - '143:143'
+      - '465:465'
+      - '587:587'
+      - '993:993'
+      - '995:995'
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - './data3:/data'
+    networks:
+      x1:
+        ipv4_address: 10.28.1.100
+
+networks:
+  x1:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.28.0.0/16
+          ip_range: 10.28.1.0/30
+          gateway: 10.28.1.1
+          aux_addresses:
+            host1: 10.28.1.2
+            host2: 10.28.1.3
