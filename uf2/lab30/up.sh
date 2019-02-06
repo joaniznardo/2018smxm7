@@ -39,6 +39,9 @@ curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword -d 'name=nestor
 
 curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword -d 'name=unaltredominiqualsevol.edu' https://10.28.1.100/admin/api/v1/domains
 curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword -d 'name=molaaquestemail&email=mola@unaltredominiqualsevol.edu&passwordPlaintext=dominimolon' https://10.28.1.100/admin/api/v1/boxes
+curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword -d 'name=shortintime&email=vistinovist@unaltredominiqualsevol.edu&passwordPlaintext=lavidaesbreu' https://10.28.1.100/admin/api/v1/boxes
+
+curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword -X "DELETE" https://10.28.1.100/admin/api/v1/boxes/vistinovist@unaltredominiqualsevol.edu
 
 ### -- 
 ##  -- etapa 3 - comprovar-ho  de manera no interactiva
