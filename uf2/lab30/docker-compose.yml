@@ -4,8 +4,8 @@ services:
   
   mailserver:
     image: analogic/poste.io
-    hostname: mailserver
-    container_name: mailserver
+    ##hostname: lab30mailserver
+    ##container_name: mailserver
     ports:      
       - '25:25'
       - '80:80'
@@ -18,10 +18,12 @@ services:
       - '995:995'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
-      - './data3:/data'
+      - 'dadesserver:/data'
     networks:
       x1:
         ipv4_address: 10.28.1.100
+volumes:
+  dadesserver:      
 
 networks:
   x1:
