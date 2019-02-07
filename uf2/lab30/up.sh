@@ -15,8 +15,8 @@ docker rm helper
 ## -- en cas de voler detall de què passa realment (màgia oculta)
 ## docker-compose --verbose -f docker-compose.yml up -d
 docker-compose -f docker-compose.yml up -d
-echo 'wait a litle bit (15 secs) while we are working...'
-sleep 15
+echo 'wait a litle bit (30 secs) while we are working...'
+sleep 30
 
 ## yes - we recycle!! ;)
 ##export CONFIG_TFTPD=tftpd-hpa.lab24
@@ -28,19 +28,35 @@ sleep 15
 ### -- 
 ##  -- etapa 1 - crear el primer domini, un compte del domini i fer-lo administratiu
 ### -- 
+## creació de domini - API: poste
 docker-compose exec mailserver poste domain:create elmeuprimerdomini.org
+
+## creació de email - API: poste
 docker-compose exec mailserver poste email:create admin@elmeuprimerdomini.org noposesaquestapassword
+
+## creació de compte administratiu - API: poste
 docker-compose exec mailserver poste email:admin admin@elmeuprimerdomini.org
 
 ### -- 
 ##  -- etapa 2 - ara que ja tenim compte administratiu, podem fer servir la REST API i crear comptes, dominis, establir quotes
 ### -- 
+
+##  creació de compte - REST API
 curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword -d 'name=nestorisback&email=nestor@elmeuprimerdomini.org&passwordPlaintext=peasovacances' https://10.28.1.100/admin/api/v1/boxes
 
+##  creació de domini - REST API
 curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword -d 'name=unaltredominiqualsevol.edu' https://10.28.1.100/admin/api/v1/domains
+
+##  creació de compte - REST API
 curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword -d 'name=molaaquestemail&email=mola@unaltredominiqualsevol.edu&passwordPlaintext=dominimolon' https://10.28.1.100/admin/api/v1/boxes
+
+##  creació de compte - REST API
 curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword -d 'name=shortintime&email=vistinovist@unaltredominiqualsevol.edu&passwordPlaintext=lavidaesbreu' https://10.28.1.100/admin/api/v1/boxes
 
+## exemple de canvi de contrassenya - REST API
+curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword -X "PATCH" -d "passwordPlaintext=flipaencarames" https://10.28.1.100/admin/api/v1/boxes/mola@unaltredominiqualsevol.edu
+
+## exemple d'esborrat de compte - REST API
 curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword -X "DELETE" https://10.28.1.100/admin/api/v1/boxes/vistinovist@unaltredominiqualsevol.edu
 
 ### -- 
