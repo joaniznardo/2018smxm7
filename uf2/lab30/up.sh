@@ -63,9 +63,22 @@ curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword -X "DELETE" htt
 ##  -- etapa 3 - comprovar-ho  de manera no interactiva
 ### -- 
 
+## exemple de consulta de dominis - REST API
 curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword  https://10.28.1.100/admin/api/v1/domains
+
+## exemple de consulta de comptes - REST API
 curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword  https://10.28.1.100/admin/api/v1/boxes
 
 ### -- 
-##  -- etapa 4 - comprovar-ho a https://10.28.1.100/admin i https://10.28.1.100/webmail
+##  -- etapa 4 - "traca" final: enviar un email "efforless"
+### -- 
+echo -e "From: <nestor@elmeuprimerdomini.org>" | tee email.txt
+echo -e "To: <mola@unaltredominiqualsevol.edu>" | tee -a email.txt
+echo -e "Subject: Sending from command line" | tee -a email.txt
+echo -e "Date: `date -R`" | tee -a email.txt
+echo -e "\nCurl is your best friend! ;)" | tee -a email.txt
+curl -v -k --url smtps://10.28.1.100 --ssl-reqd --mail-from nestor@elmeuprimerdomini.org --mail-rcpt mola@unaltredominiqualsevol.edu --user nestor@elmeuprimerdomini.org:peasovacances --upload-file email.txt
+
+### -- 
+##  -- etapa 5 - comprovar-ho tot a https://10.28.1.100/admin i https://10.28.1.100/webmail
 ### -- 
