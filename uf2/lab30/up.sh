@@ -79,6 +79,9 @@ echo -e "Date: `date -R`" | tee -a email.txt
 echo -e "\nCurl is your best friend! ;)" | tee -a email.txt
 curl -v -k --url smtps://10.28.1.100 --ssl-reqd --mail-from nestor@elmeuprimerdomini.org --mail-rcpt mola@unaltredominiqualsevol.edu --user nestor@elmeuprimerdomini.org:peasovacances --upload-file email.txt
 
+## even without generating a single file - https://news.ycombinator.com/item?id=18506601
+#curl -v -k --url smtps://10.28.1.100 --ssl-reqd --mail-from nestor@elmeuprimerdomini.org --mail-rcpt mola@unaltredominiqualsevol.edu --user nestor@elmeuprimerdomini.org:peasovacances --upload-file <(echo -e 'From: nestor@elmeuprimerdomini.org\nTo: mola@unaltredominiqualsevol.edu\nSubject: Curl Test\n\nHello');
+
 ### -- 
 ##  -- etapa 5 - comprovar-ho tot a https://10.28.1.100/admin i https://10.28.1.100/webmail
 ### -- 
