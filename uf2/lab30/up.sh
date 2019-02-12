@@ -37,6 +37,19 @@ docker-compose exec mailserver poste email:create admin@elmeuprimerdomini.org no
 ## creació de compte administratiu - API: poste
 docker-compose exec mailserver poste email:admin admin@elmeuprimerdomini.org
 
+## creació de email - API: poste
+docker-compose exec mailserver poste email:create compteambquota@elmeuprimerdomini.org passwordinsegura
+
+## establiment de quota per nombre d' emails  - API: poste
+docker-compose exec mailserver poste email:quota compteambquota@elmeuprimerdomini.org 5 0 
+
+## establiment de quota pel tamany  de cada email  - API: poste
+docker-compose exec mailserver poste email:quota compteambquota@elmeuprimerdomini.org 0 5 
+
+## establiment de quota doble (nombre i tamany)  - API: poste
+docker-compose exec mailserver poste email:quota compteambquota@elmeuprimerdomini.org 10 6 
+
+
 ### -- 
 ##  -- etapa 2 - ara que ja tenim compte administratiu, podem fer servir la REST API i crear comptes, dominis, establir quotes
 ### -- 
@@ -58,6 +71,18 @@ curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword -X "PATCH" -d "
 
 ## exemple d'esborrat de compte - REST API
 curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword -X "DELETE" https://10.28.1.100/admin/api/v1/boxes/vistinovist@unaltredominiqualsevol.edu
+
+
+### ------------- !!!!!!
+# atenció a l'enviament de valors no textuals a través de curl!
+### ------------- !!!!!!
+# -- establiment d'un valor booleà (true/false)
+# -- des/activació d'un compte administratiu
+curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword --header "Content-Type: application/json" -X "PATCH" --data '{"superAdmin":true}' https://10.28.1.100/admin/api/v1/boxes/compteambquota@elmeuprimerdomini.org 
+
+# -- establiment d'un valor booleà (true/false)
+# -- des/activació d'un tipus de quota
+curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword --header "Content-Type: application/json" -X "PATCH" --data '{"storageLimit":true}' https://10.28.1.100/admin/api/v1/boxes/compteambquota@elmeuprimerdomini.org 
 
 ### -- 
 ##  -- etapa 3 - comprovar-ho  de manera no interactiva
