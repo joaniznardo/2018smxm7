@@ -80,10 +80,15 @@ curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword -X "DELETE" htt
 # -- des/activació d'un compte administratiu
 curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword --header "Content-Type: application/json" -X "PATCH" --data '{"superAdmin":true}' https://10.28.1.100/admin/api/v1/boxes/compteambquota@elmeuprimerdomini.org 
 
-# -- establiment d'un valor booleà (true/false)
-# -- des/activació d'un tipus de quota
-curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword --header "Content-Type: application/json" -X "PATCH" --data '{"storageLimit":true}' https://10.28.1.100/admin/api/v1/boxes/compteambquota@elmeuprimerdomini.org 
+# -- establiment d'un valor numèric (float: tot i que només acceptarà enters)
+# -- fixem un valor enter per a la quota de disc, per volum de missatges o nombre de visatges
+curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword --header "Content-Type: application/json" -X "PATCH" --data '{"storageLimit":12}' https://10.28.1.100/admin/api/v1/boxes/compteambquota@elmeuprimerdomini.org/quota 
 
+# -- establiment d'un valor numèric (float: tot i que només acceptarà enters)
+# -- fixem un valor enter per a la quota de disc, per volum de missatges o nombre de visatges
+curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword --header "Content-Type: application/json" -X "PATCH" --data '{countLimit":12}' https://10.28.1.100/admin/api/v1/boxes/compteambquota@elmeuprimerdomini.org/quota 
+
+### -- 
 ### -- 
 ##  -- etapa 3 - comprovar-ho  de manera no interactiva
 ### -- 

@@ -1,7 +1,6 @@
 From: <nestor@elmeuprimerdomini.org>
 To: <mola@unaltredominiqualsevol.edu>
-Subject: Sending emails with curl
-Date: Fri, 08 Feb 2019 12:14:45 +0100
+Subject: Sending from command line
+Date: Tue, 12 Feb 2019 18:16:55 +0100
 
-Curl is your best friend
-
+Curl is your best friend! ;)
