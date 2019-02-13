@@ -82,11 +82,17 @@ curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword --header "Conte
 
 # -- establiment d'un valor numèric (float: tot i que només acceptarà enters)
 # -- fixem un valor enter per a la quota de disc, per volum de missatges o nombre de visatges
-curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword --header "Content-Type: application/json" -X "PATCH" --data '{"storageLimit":12}' https://10.28.1.100/admin/api/v1/boxes/compteambquota@elmeuprimerdomini.org/quota 
+curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword --header "Content-Type: application/json" -X "PATCH" --data '{"storageLimit":20}' https://10.28.1.100/admin/api/v1/boxes/compteambquota@elmeuprimerdomini.org/quota 
+
+## - validació
+curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword  https://10.28.1.100/admin/api/v1/boxes/compteambquota@elmeuprimerdomini.org/quota 
 
 # -- establiment d'un valor numèric (float: tot i que només acceptarà enters)
 # -- fixem un valor enter per a la quota de disc, per volum de missatges o nombre de visatges
-curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword --header "Content-Type: application/json" -X "PATCH" --data '{countLimit":12}' https://10.28.1.100/admin/api/v1/boxes/compteambquota@elmeuprimerdomini.org/quota 
+curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword --header "Content-Type: application/json" -X "PATCH" --data '{"countLimit":12}' https://10.28.1.100/admin/api/v1/boxes/compteambquota@elmeuprimerdomini.org/quota 
+
+## - validació
+curl -v -k -u admin@elmeuprimerdomini.org:noposesaquestapassword  https://10.28.1.100/admin/api/v1/boxes/compteambquota@elmeuprimerdomini.org/quota 
 
 ### -- 
 ### -- 
