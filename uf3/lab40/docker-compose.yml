@@ -1,0 +1,48 @@
+version: '2'
+
+services:
+  
+  apache:
+    image: joaniznardo/ubuntum7http
+    ##  hostname: webserver.lab40.edu
+##  container_name: webserver.lab40.edu
+    hostname: webserver
+    container_name: webserver
+    ports:      
+      - '80:80'
+      - '443:443'
+##    volumes:
+##      - '/etc/localtime:/etc/localtime:ro'
+##      - 'dadesserver:/data'
+    networks:
+      x1:
+        ipv4_address: 10.28.1.100
+##volumes:
+##  dadesserver:      
+  firefox:
+    container_name: firefox
+    ports:
+      - '5800:5800'
+#vnc directe            - '5900:5900'
+
+## config temporal
+##        volumes:
+##            - '/docker/appdata/firefox:/config:rw'
+    tmpfs:
+      - '/config:rw'
+
+    image: jlesage/firefox
+    networks:
+      x1:
+
+networks:
+  x1:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.28.1.0/24
+          ##        ip_range: 10.28.1.0/30
+          gateway: 10.28.1.1
+          aux_addresses:
+            host1: 10.28.1.2
+            host2: 10.28.1.3
