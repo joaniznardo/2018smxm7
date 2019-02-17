@@ -6,15 +6,16 @@ services:
     image: joaniznardo/ubuntum7http
     hostname: webserver
     container_name: webserver
-    ##    cap_add:
-    ##  - NET_ADMIN
-    ##  - SYS_ADMIN
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
     ports:      
-      - '80:80'
-      - '443:443'
+      - '8080-8090:80'
+      - '44300-44310:443'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
       - './www:/var/www:ro'
+      - './sites-available:/etc/apache2/sites-available:ro'
     networks:
       x1:
         ipv4_address: 10.28.1.100
@@ -22,7 +23,13 @@ services:
   textclient:
     image: joaniznardo/ubuntum7base
     hostname: textclient
-    container_name: textclient
+    container_name: textclient_cont
+    domainname: lab42
+    extra_hosts: &llistahosts
+      - www.serverjoan.lab42:10.28.1.100
+      - www.elmeuprimerllocweb.org:10.28.1.103        
+      - www.facebook.com:10.28.1.102        
+      - www.apacheserver.test:10.28.1.101       
     networks:
       x1:
         ipv4_address: 10.28.1.99 
@@ -31,6 +38,7 @@ services:
     image: jlesage/firefox
     hostname: firefox
     container_name: firefox
+    extra_hosts: *llistahosts
     ports:
 #novnc - web enabled remote desktop            
       - '5800:5800'

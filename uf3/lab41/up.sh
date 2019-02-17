@@ -1,5 +1,11 @@
 #!/bin/bash
+##
+## les't make some colourful 
+yellow='\e[0;43m'
+endColor='\e[0m'
 
+# Display welcome message
+echo -e "${yellow}Welcome $USER ${endColor}\n"
 ### -- 
 ##  ens assegurem que disposem de la darrera versió de les imatges
 ## --
@@ -32,6 +38,9 @@ docker-compose exec apache netstat -atnp | grep :80 | wc -l
 
 
 # etapes per crear una web:
+### -- 
+##  -- etapa 1 - preparar el servidor
+### -- 
 
 # - deshabilitar la que tenim per defecte
 docker-compose exec apache /usr/sbin/a2dissite 000-default 
@@ -41,9 +50,6 @@ docker-compose exec apache /usr/sbin/a2dissite 000-default
 docker-compose exec apache cp /etc/apache2/sites-available/00{0-default,1-website01}.conf
 docker-compose exec apache sed  -i '/DocumentRoot/s/html/website01/' /etc/apache2/sites-available/001-website01.conf
 
-#- crear el directori (per exemple WEBSITE01) que s'indica al nou fitxer del lloc (seu) web
-docker-compose exec apache mkdir -p /var/www/website01
-
 #- habilitar la nova site
 docker-compose exec apache /usr/sbin/a2ensite  001-website01
 
@@ -51,8 +57,12 @@ docker-compose exec apache /usr/sbin/a2ensite  001-website01
 docker-compose exec apache /usr/sbin/apache2ctl restart
 
 ### -- 
-##  -- etapa 2 - 
+##  -- etapa 2 - validar que ho hem aconseguit
 ### -- 
+
+# Display welcome message
+echo -e "\n${yellow}Validació: comprovació des del client ${endColor}\n"
+docker-compose exec textclient curl 10.28.1.100
 
 ### -- 
 ##  -- etapa 3 - 
