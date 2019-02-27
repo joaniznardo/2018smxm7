@@ -10,8 +10,7 @@ services:
       - NET_ADMIN
       - SYS_ADMIN
     ports:      
-      - '8080-8090:80'
-      - '44300-44310:443'
+      - '8080-8090:8080-8090'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
       - './www:/var/www:ro'
