@@ -1,0 +1,1 @@
+#fitxer per facilitar que el directori aparega a github :)
