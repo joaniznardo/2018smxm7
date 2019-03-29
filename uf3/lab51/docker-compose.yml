@@ -61,10 +61,10 @@ services:
     environment:
       - FF_PREF_HTTP_PROXY=network.proxy.http=10.28.1.90:3128
       - PROXY=10.28.1.90:3128
-      - HTTP_PROXY=$PROXY
-      - HTTPS_PROXY=$PROXY
-      - http_proxy=$PROXY
-      - https_proxy=$PROXY
+      - HTTP_PROXY=10.28.1.90:3128
+      - HTTPS_PROXY=10.28.1.90:3128
+      - http_proxy=10.28.1.90:3128
+      - https_proxy=10.28.1.90:3128
     extra_hosts: *llistahosts
     ports:
 #novnc - web enabled remote desktop            
