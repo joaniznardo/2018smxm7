@@ -1,0 +1,83 @@
+version: '2'
+
+services:
+  
+  dhcpclient01:
+    image: joaniznardo/ubuntum7base
+    privileged: true
+    mem_limit: 100m
+    hostname: dhcpclient01
+    container_name: dhcpclient01
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    networks:
+      x1:
+        ipv4_address: 72.28.1.101
+    
+  dhcpclient02:
+    image: joaniznardo/ubuntum7base
+    privileged: true
+    mem_limit: 100m
+    hostname: dhcpclient02
+    container_name: dhcpclient02
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    networks:
+      x1:
+        ipv4_address: 72.28.1.102
+    
+  dhcpclient03:
+    image: joaniznardo/ubuntum7base
+    privileged: true
+    mem_limit: 100m
+    hostname: dhcpclient03
+    container_name: dhcpclient03
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    networks:
+      x1:
+        ipv4_address: 72.28.1.103
+    
+  dnsserver:
+    image: joaniznardo/ubuntum7dnsbind
+    privileged: true
+    mem_limit: 100m
+    hostname: dnsserver
+    container_name: dnsserver
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    networks:
+      x1:
+        ipv4_address: 72.28.1.100
+  
+  dnsserver2:
+    image: joaniznardo/ubuntum7dnsbind
+    privileged: true
+    mem_limit: 100m
+    hostname: dnsserver2
+    container_name: dnsserver2
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    networks:
+      x1:
+        ipv4_address: 72.28.1.98
+  
+networks:
+  x1:
+    ipam:
+      driver: default
+      config:
+        - subnet: 72.28.1.0/24
+          ip_range: 72.28.1.0/30
+          gateway: 72.28.1.1
+          aux_addresses:
+            host1: 72.28.1.2
+            host2: 72.28.1.3
+#
+#
+
