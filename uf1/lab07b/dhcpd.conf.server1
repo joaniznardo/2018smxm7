@@ -1,0 +1,12 @@
+ddns-update-style none;
+default-lease-time 600;
+max-lease-time 7200;
+log-facility local7;
+subnet 72.28.0.0 netmask 255.255.0.0 {
+  range 72.28.1.55 72.28.1.75;
+  option routers 72.28.1.1;
+}
+host cont01 {
+        hardware ethernet 00:11:22:33:44:55;
+        fixed-address 72.28.1.150;
+}
