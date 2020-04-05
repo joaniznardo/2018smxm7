@@ -16,7 +16,7 @@ docker exec dhcpserver /bin/bash -c "service isc-dhcp-server restart;service isc
 sleep 2 
 
 # posem a escoltar el server
-(docker exec -t dhcpserver tcpdump -v -i eth0 -n port bootps or bootpc | tee out.tcpdump) &
+(docker exec -t dhcpserver tcpdump -v -i eth0 -n port bootps or bootpc | tee dhcpserver.pcap) &
 
 #############################
 ###### dhcpclient      ######
@@ -35,5 +35,5 @@ docker exec dhcpclient1 /bin/bash -c "ip a"
 # si no alliberem la ip aleshores afegeix un alias
 #docker exec dhcpclient1 /bin/bash -c "dhclient -r eth0; dhclient eth0"
 
-# alliberem el server del tcpdump
+echo -e "\nalliberem el server del tcpdump"
 docker exec -it dhcpserver pkill tcpdump
