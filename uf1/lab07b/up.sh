@@ -1,8 +1,13 @@
 #!/bin/bash -x
+# redundant (abaix) si fem el #!/bin/bash -x
 set -x
+
 #set -v
+
+export SLEEP_COMPOSE=1
+export SLEEP_DHCPSERVER=1
 docker-compose -f docker-compose.yml up -d
-sleep 5 
+sleep $SLEEP_COMPOSE
 
 
 #############################
@@ -13,10 +18,15 @@ sleep 5
 docker cp isc-dhcp-server.server1 dhcpserver:/etc/default/isc-dhcp-server
 docker cp dhcpd.conf.server1  dhcpserver:/etc/dhcp/dhcpd.conf
 docker exec dhcpserver /bin/bash -c "service isc-dhcp-server restart;service isc-dhcp-server status"
-sleep 2 
 
 # posem a escoltar el server
-(docker exec -t dhcpserver tcpdump -v -i eth0 -n port bootps or bootpc | tee dhcpserver.pcap) &
+## observant en pantalla
+## (docker exec -t dhcpserver tcpdump -v -i eth0 -n port bootps or bootpc | tee dhcpserver.pcap) &
+## observant a posteriori via fitxer 
+####### :( docker exec -dt dhcpserver tcpdump -w dhcpserver.pcap -v -i eth0 -n port bootps or bootpc 
+## >> (docker exec -t dhcpserver tcpdump --immediate-mode -w intern.pcap -v -i eth0 -n port bootps or bootpc)&
+docker exec -dt dhcpserver tcpdump --immediate-mode -w intern.pcap -v -i eth0 -n port bootps or bootpc
+sleep $SLEEP_DHCPSERVER
 
 #############################
 ###### dhcpclient      ######
@@ -37,3 +47,7 @@ docker exec dhcpclient1 /bin/bash -c "ip a"
 
 echo -e "\nalliberem el server del tcpdump"
 docker exec -it dhcpserver pkill tcpdump
+
+echo -e "\nRevisem la captura"
+#docker exec -ti dhcpserver tcpdump -r dhcpserver.pcap
+docker exec -ti dhcpserver tcpdump -n -v -r intern.pcap
