@@ -20,10 +20,11 @@ docker cp dhcpd.conf.server1  dhcpserver:/etc/dhcp/dhcpd.conf
 docker exec dhcpserver /bin/bash -c "service isc-dhcp-server restart;service isc-dhcp-server status"
 
 # posem a escoltar el server
-## observant en pantalla
+## observant en pantalla: obtindrem en el host un fitxer (dhcpserver.pcap) com a sortida del tcpdump
 ## (docker exec -t dhcpserver tcpdump -v -i eth0 -n port bootps or bootpc | tee dhcpserver.pcap) &
-## observant a posteriori via fitxer 
-####### :( docker exec -dt dhcpserver tcpdump -w dhcpserver.pcap -v -i eth0 -n port bootps or bootpc 
+
+
+## observant a posteriori via fitxer: obtindrem un fitxer "intern" al container que podem recuperar amb un "docker cp ..."
 ## >> (docker exec -t dhcpserver tcpdump --immediate-mode -w intern.pcap -v -i eth0 -n port bootps or bootpc)&
 docker exec -dt dhcpserver tcpdump --immediate-mode -w intern.pcap -v -i eth0 -n port bootps or bootpc
 sleep $SLEEP_DHCPSERVER
@@ -50,4 +51,7 @@ docker exec -it dhcpserver pkill tcpdump
 
 echo -e "\nRevisem la captura"
 #docker exec -ti dhcpserver tcpdump -r dhcpserver.pcap
-docker exec -ti dhcpserver tcpdump -n -v -r intern.pcap
+docker exec -ti dhcpserver tcpdump -n -v -r intern.pcap | tee extern.pcap.txt
+
+echo -e "\nConservem l'original per si volem fer-lo servir amb wireshark" 
+docker cp dhcpserver:intern.pcap extern.pcap
