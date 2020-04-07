@@ -26,6 +26,7 @@ docker exec dhcpserver /bin/bash -c "service isc-dhcp-server restart;service isc
 
 ## observant a posteriori via fitxer: obtindrem un fitxer "intern" al container que podem recuperar amb un "docker cp ..."
 ## >> (docker exec -t dhcpserver tcpdump --immediate-mode -w intern.pcap -v -i eth0 -n port bootps or bootpc)&
+## ******************** la clau està en > --immediate-mode < doncs forcem al nucli a escriure a fitxer cada captura !! ;)
 docker exec -dt dhcpserver tcpdump --immediate-mode -w intern.pcap -v -i eth0 -n port bootps or bootpc
 sleep $SLEEP_DHCPSERVER
 
@@ -39,12 +40,22 @@ docker exec dhcpclient1 /bin/bash -c "ip a"
 #docker exec dhcpclient1 /bin/bash -c "dhclient eth0"
 #docker exec dhcpclient1 /bin/bash -c "ip a"
 
-# necessari per no tindre una ip fixa i un alias (ip dinàmica)  
-docker exec dhcpclient1 /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"
-echo -e "\nComprovem la ip DESPRES de demanarla"
-docker exec dhcpclient1 /bin/bash -c "ip a"
-# si no alliberem la ip aleshores afegeix un alias
-#docker exec dhcpclient1 /bin/bash -c "dhclient -r eth0; dhclient eth0"
+### old-way - unkowing ip a flush :)
+### necessari per no tindre una ip fixa i un alias (ip dinàmica)  
+##docker exec dhcpclient1 /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"
+##echo -e "\nComprovem la ip DESPRES de demanarla"
+##docker exec dhcpclient1 /bin/bash -c "ip a"
+### si no alliberem la ip aleshores afegeix un alias
+###docker exec dhcpclient1 /bin/bash -c "dhclient -r eth0; dhclient eth0"
+
+echo -e "\nAlliberem la ip estàtica"
+docker exec dhcpclient1 ip a flush dev eth0
+echo -e "\nComprovem la ip (abans dhcp)"
+docker exec dhcpclient1 ip a 
+echo -e "\nDemanem ip"
+docker exec dhcpclient1 /bin/bash -c "dhclient eth0;"
+echo -e "\nComprovem la ip (després dhcp)"
+docker exec dhcpclient1 ip a 
 
 echo -e "\nalliberem el server del tcpdump"
 docker exec -it dhcpserver pkill tcpdump
