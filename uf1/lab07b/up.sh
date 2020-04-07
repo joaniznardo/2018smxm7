@@ -33,8 +33,12 @@ sleep $SLEEP_DHCPSERVER
 #############################
 ###### dhcpclient      ######
 #############################
-echo -e "\nComprovem la ip abans de demanarla"
-docker exec dhcpclient1 /bin/bash -c "ip a"
+echo -e "\nComprovem la ip (abans   dhcp)"
+docker exec dhcpclient1 ip a 
+echo -e "\nComprovem la passarela (abans   dhcp)"
+docker exec dhcpclient1 ip r 
+echo -e "\nComprovem el resolver assignat (abans   dhcp)"
+docker exec dhcpclient1 cat /etc/resolv.conf 
 #docker exec dhcpclient1 ip a del 72.28.1.101/32 dev eth0
 #docker exec dhcpclient1 /bin/bash -c "ip a"
 #docker exec dhcpclient1 /bin/bash -c "dhclient eth0"
@@ -50,12 +54,21 @@ docker exec dhcpclient1 /bin/bash -c "ip a"
 
 echo -e "\nAlliberem la ip estàtica"
 docker exec dhcpclient1 ip a flush dev eth0
-echo -e "\nComprovem la ip (abans dhcp)"
+echo -e "\nComprovem la ip (despres alliberar - abans dhcp)"
 docker exec dhcpclient1 ip a 
+
+echo -e "\nHACK OF THE DAY: per permetre al server de dhcp que actualitze el fitxer resolv.conf cal que desmuntem /etc/resolv.conf"
+docker exec dhcpclient1 /bin/bash -c "umount /etc/resolv.conf"
+
 echo -e "\nDemanem ip"
 docker exec dhcpclient1 /bin/bash -c "dhclient eth0;"
+
 echo -e "\nComprovem la ip (després dhcp)"
 docker exec dhcpclient1 ip a 
+echo -e "\nComprovem la passarela (després dhcp)"
+docker exec dhcpclient1 ip r 
+echo -e "\nComprovem el resolver assignat (després dhcp)"
+docker exec dhcpclient1 cat /etc/resolv.conf 
 
 echo -e "\nalliberem el server del tcpdump"
 docker exec -it dhcpserver pkill tcpdump
