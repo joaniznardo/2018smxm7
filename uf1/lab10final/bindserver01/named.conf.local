@@ -1,0 +1,34 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+// clau per que dhcp - dns puguen parlar
+include "/etc/bind/rndc.key";
+
+
+zone "jiznardo.org" {
+    type master;
+    #file "/etc/bind/zones/db.jiznardo.org"; # zone file path
+    file "/var/lib/bind/db.jiznardo.org"; # zone file path
+    #allow-transfer { 72.28.1.88; 72.28.1.150;};           # ns2 private IP address - secondary
+    allow-transfer { 72.28.1.0/24;};           # ns2 private IP address - secondary
+    allow-update {key rndc-key;};
+
+#   allow-transfer { none; };           # ns2 private IP address - secondary
+
+};
+
+zone "1.28.72.in-addr.arpa" {
+    type master;
+    #file "/etc/bind/zones/db.1.28.72";  # /24 subnet
+    file "/var/lib/bind/db.1.28.72";  # /24 subnet
+    #allow-transfer { 72.28.1.88;72.28.1.150; };           # ns2 private IP address - secondary
+    allow-transfer { 72.28.1.0/24;};           # ns2 private IP address - secondary
+    allow-update {key rndc-key;};
+
+#   allow-transfer { none; };           # ns2 private IP address - secondary
+};

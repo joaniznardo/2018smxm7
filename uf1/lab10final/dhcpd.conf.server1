@@ -1,0 +1,48 @@
+#ddns-update-style none;
+
+## - from -- https://blog.bigdinosaur.org/running-bind9-and-isc-dhcp/
+ddns-updates on;
+ddns-update-style interim;
+update-static-leases on;
+authoritative;
+key "rndc-key" {
+	algorithm hmac-md5;
+	secret "xW7Cd0lKeJhoQVbw2GUvow=="; 
+};
+
+allow unknown-clients;
+use-host-decl-names on;
+
+default-lease-time 600;
+max-lease-time 7200;
+
+log-facility local7;
+
+zone jiznardo.org. {
+    primary 72.28.1.90; # This server is the primary DNS server for the zone
+    key rndc-key; # Use the key we defined earlier for dynamic updates
+    }
+zone 1.28.72.in-addr.arpa. {
+    primary 72.28.1.90; # This server is the primary DNS server for the zone
+    key rndc-key; # Use the key we defined earlier for dynamic updates
+    }
+
+
+
+subnet 72.28.0.0 netmask 255.255.0.0 {
+  range 72.28.1.45 72.28.1.85;
+  option subnet-mask 255.255.255.0;
+  option routers 72.28.1.100; # el server de dhcp
+  option domain-name-servers 70.28.1.90, 9.9.9.9; # el server de dns
+  option domain-name "jiznardo.org";
+
+  ddns-domainname "jiznardo.org.";
+  ddns-rev-domainname "in-addr.arpa.";
+}
+
+host client150.jiznardo.org {
+        hardware ethernet 00:11:22:33:44:55;
+        fixed-address 72.28.1.150;
+        ddns-hostname "client150";
+}
+
