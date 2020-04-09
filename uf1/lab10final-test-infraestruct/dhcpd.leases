@@ -1,0 +1,375 @@
+# The format of this file is documented in the dhcpd.leases(5) manual page.
+# This lease file was written by isc-dhcp-4.2.4
+
+server-duid "\000\001\000\001&\"*r\002BH\034\001d";
+
+lease 72.28.1.45 {
+  starts 4 2020/04/09 18:48:20;
+  ends 4 2020/04/09 18:58:20;
+  cltt 4 2020/04/09 18:48:20;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:07;
+  client-hostname "855a53401bc8";
+}
+lease 72.28.1.45 {
+  starts 4 2020/04/09 18:48:20;
+  ends 4 2020/04/09 18:58:20;
+  cltt 4 2020/04/09 18:48:20;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:07;
+  set ddns-txt = "00ce8bd6ba670081ce3fbfcfbde26ab0f6";
+  set ddns-fwd-name = "855a53401bc8.jiznardo.org.";
+  client-hostname "855a53401bc8";
+}
+lease 72.28.1.45 {
+  starts 4 2020/04/09 18:48:20;
+  ends 4 2020/04/09 18:58:20;
+  cltt 4 2020/04/09 18:48:20;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:07;
+  set ddns-rev-name = "45.1.28.72.in-addr.arpa.";
+  set ddns-txt = "00ce8bd6ba670081ce3fbfcfbde26ab0f6";
+  set ddns-fwd-name = "855a53401bc8.jiznardo.org.";
+  client-hostname "855a53401bc8";
+}
+lease 72.28.1.46 {
+  starts 4 2020/04/09 18:48:23;
+  ends 4 2020/04/09 18:58:23;
+  cltt 4 2020/04/09 18:48:23;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:02;
+  client-hostname "a3dc2eb4f271";
+}
+lease 72.28.1.46 {
+  starts 4 2020/04/09 18:48:23;
+  ends 4 2020/04/09 18:58:23;
+  cltt 4 2020/04/09 18:48:23;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:02;
+  set ddns-txt = "00f3ea2f12c073a419c5b0ed2dff1ff763";
+  set ddns-fwd-name = "a3dc2eb4f271.jiznardo.org.";
+  client-hostname "a3dc2eb4f271";
+}
+lease 72.28.1.46 {
+  starts 4 2020/04/09 18:48:23;
+  ends 4 2020/04/09 18:58:23;
+  cltt 4 2020/04/09 18:48:23;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:02;
+  set ddns-rev-name = "46.1.28.72.in-addr.arpa.";
+  set ddns-txt = "00f3ea2f12c073a419c5b0ed2dff1ff763";
+  set ddns-fwd-name = "a3dc2eb4f271.jiznardo.org.";
+  client-hostname "a3dc2eb4f271";
+}
+lease 72.28.1.47 {
+  starts 4 2020/04/09 18:48:24;
+  ends 4 2020/04/09 18:58:24;
+  cltt 4 2020/04/09 18:48:24;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:06;
+  client-hostname "3c1c8ea990ac";
+}
+lease 72.28.1.47 {
+  starts 4 2020/04/09 18:48:24;
+  ends 4 2020/04/09 18:58:24;
+  cltt 4 2020/04/09 18:48:24;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:06;
+  set ddns-txt = "004d977deffc49f2421ba8d132c6367952";
+  set ddns-fwd-name = "3c1c8ea990ac.jiznardo.org.";
+  client-hostname "3c1c8ea990ac";
+}
+lease 72.28.1.47 {
+  starts 4 2020/04/09 18:48:24;
+  ends 4 2020/04/09 18:58:24;
+  cltt 4 2020/04/09 18:48:24;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:06;
+  set ddns-rev-name = "47.1.28.72.in-addr.arpa.";
+  set ddns-txt = "004d977deffc49f2421ba8d132c6367952";
+  set ddns-fwd-name = "3c1c8ea990ac.jiznardo.org.";
+  client-hostname "3c1c8ea990ac";
+}
+lease 72.28.1.48 {
+  starts 4 2020/04/09 18:48:24;
+  ends 4 2020/04/09 18:58:24;
+  cltt 4 2020/04/09 18:48:24;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:04;
+  client-hostname "a44a200523ea";
+}
+lease 72.28.1.48 {
+  starts 4 2020/04/09 18:48:24;
+  ends 4 2020/04/09 18:58:24;
+  cltt 4 2020/04/09 18:48:24;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:04;
+  set ddns-txt = "00cadabbbd32483aa9b6ac32b20cd6df7d";
+  set ddns-fwd-name = "a44a200523ea.jiznardo.org.";
+  client-hostname "a44a200523ea";
+}
+lease 72.28.1.48 {
+  starts 4 2020/04/09 18:48:24;
+  ends 4 2020/04/09 18:58:24;
+  cltt 4 2020/04/09 18:48:24;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:04;
+  set ddns-rev-name = "48.1.28.72.in-addr.arpa.";
+  set ddns-txt = "00cadabbbd32483aa9b6ac32b20cd6df7d";
+  set ddns-fwd-name = "a44a200523ea.jiznardo.org.";
+  client-hostname "a44a200523ea";
+}
+lease 72.28.1.49 {
+  starts 4 2020/04/09 18:48:24;
+  ends 4 2020/04/09 18:58:24;
+  cltt 4 2020/04/09 18:48:24;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:05;
+  client-hostname "0676df81a89b";
+}
+lease 72.28.1.49 {
+  starts 4 2020/04/09 18:48:24;
+  ends 4 2020/04/09 18:58:24;
+  cltt 4 2020/04/09 18:48:24;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:05;
+  set ddns-txt = "00df634d5065202bc34bd219f17923636a";
+  set ddns-fwd-name = "0676df81a89b.jiznardo.org.";
+  client-hostname "0676df81a89b";
+}
+lease 72.28.1.49 {
+  starts 4 2020/04/09 18:48:24;
+  ends 4 2020/04/09 18:58:24;
+  cltt 4 2020/04/09 18:48:24;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:05;
+  set ddns-rev-name = "49.1.28.72.in-addr.arpa.";
+  set ddns-txt = "00df634d5065202bc34bd219f17923636a";
+  set ddns-fwd-name = "0676df81a89b.jiznardo.org.";
+  client-hostname "0676df81a89b";
+}
+lease 72.28.1.45 {
+  starts 4 2020/04/09 18:52:20;
+  ends 4 2020/04/09 19:02:20;
+  cltt 4 2020/04/09 18:52:20;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:07;
+  set ddns-rev-name = "45.1.28.72.in-addr.arpa.";
+  set ddns-txt = "00ce8bd6ba670081ce3fbfcfbde26ab0f6";
+  set ddns-fwd-name = "855a53401bc8.jiznardo.org.";
+  client-hostname "855a53401bc8";
+}
+lease 72.28.1.49 {
+  starts 4 2020/04/09 18:52:53;
+  ends 4 2020/04/09 19:02:53;
+  cltt 4 2020/04/09 18:52:53;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:05;
+  set ddns-rev-name = "49.1.28.72.in-addr.arpa.";
+  set ddns-txt = "00df634d5065202bc34bd219f17923636a";
+  set ddns-fwd-name = "0676df81a89b.jiznardo.org.";
+  client-hostname "0676df81a89b";
+}
+lease 72.28.1.48 {
+  starts 4 2020/04/09 18:52:53;
+  ends 4 2020/04/09 19:02:53;
+  cltt 4 2020/04/09 18:52:53;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:04;
+  set ddns-rev-name = "48.1.28.72.in-addr.arpa.";
+  set ddns-txt = "00cadabbbd32483aa9b6ac32b20cd6df7d";
+  set ddns-fwd-name = "a44a200523ea.jiznardo.org.";
+  client-hostname "a44a200523ea";
+}
+lease 72.28.1.46 {
+  starts 4 2020/04/09 18:52:57;
+  ends 4 2020/04/09 19:02:57;
+  cltt 4 2020/04/09 18:52:57;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:02;
+  set ddns-rev-name = "46.1.28.72.in-addr.arpa.";
+  set ddns-txt = "00f3ea2f12c073a419c5b0ed2dff1ff763";
+  set ddns-fwd-name = "a3dc2eb4f271.jiznardo.org.";
+  client-hostname "a3dc2eb4f271";
+}
+lease 72.28.1.47 {
+  starts 4 2020/04/09 18:53:17;
+  ends 4 2020/04/09 19:03:17;
+  cltt 4 2020/04/09 18:53:17;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:06;
+  set ddns-rev-name = "47.1.28.72.in-addr.arpa.";
+  set ddns-txt = "004d977deffc49f2421ba8d132c6367952";
+  set ddns-fwd-name = "3c1c8ea990ac.jiznardo.org.";
+  client-hostname "3c1c8ea990ac";
+}
+lease 72.28.1.45 {
+  starts 4 2020/04/09 18:56:58;
+  ends 4 2020/04/09 19:06:58;
+  cltt 4 2020/04/09 18:56:58;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:07;
+  set ddns-rev-name = "45.1.28.72.in-addr.arpa.";
+  set ddns-txt = "00ce8bd6ba670081ce3fbfcfbde26ab0f6";
+  set ddns-fwd-name = "855a53401bc8.jiznardo.org.";
+  client-hostname "855a53401bc8";
+}
+lease 72.28.1.49 {
+  starts 4 2020/04/09 18:57:07;
+  ends 4 2020/04/09 19:07:07;
+  cltt 4 2020/04/09 18:57:07;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:05;
+  set ddns-rev-name = "49.1.28.72.in-addr.arpa.";
+  set ddns-txt = "00df634d5065202bc34bd219f17923636a";
+  set ddns-fwd-name = "0676df81a89b.jiznardo.org.";
+  client-hostname "0676df81a89b";
+}
+lease 72.28.1.46 {
+  starts 4 2020/04/09 18:57:44;
+  ends 4 2020/04/09 19:07:44;
+  cltt 4 2020/04/09 18:57:44;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:02;
+  set ddns-rev-name = "46.1.28.72.in-addr.arpa.";
+  set ddns-txt = "00f3ea2f12c073a419c5b0ed2dff1ff763";
+  set ddns-fwd-name = "a3dc2eb4f271.jiznardo.org.";
+  client-hostname "a3dc2eb4f271";
+}
+lease 72.28.1.48 {
+  starts 4 2020/04/09 18:57:49;
+  ends 4 2020/04/09 19:07:49;
+  cltt 4 2020/04/09 18:57:49;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:04;
+  set ddns-rev-name = "48.1.28.72.in-addr.arpa.";
+  set ddns-txt = "00cadabbbd32483aa9b6ac32b20cd6df7d";
+  set ddns-fwd-name = "a44a200523ea.jiznardo.org.";
+  client-hostname "a44a200523ea";
+}
+lease 72.28.1.47 {
+  starts 4 2020/04/09 18:58:05;
+  ends 4 2020/04/09 19:08:05;
+  cltt 4 2020/04/09 18:58:05;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:06;
+  set ddns-rev-name = "47.1.28.72.in-addr.arpa.";
+  set ddns-txt = "004d977deffc49f2421ba8d132c6367952";
+  set ddns-fwd-name = "3c1c8ea990ac.jiznardo.org.";
+  client-hostname "3c1c8ea990ac";
+}
+lease 72.28.1.45 {
+  starts 4 2020/04/09 19:01:39;
+  ends 4 2020/04/09 19:11:39;
+  cltt 4 2020/04/09 19:01:39;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:07;
+  set ddns-rev-name = "45.1.28.72.in-addr.arpa.";
+  set ddns-txt = "00ce8bd6ba670081ce3fbfcfbde26ab0f6";
+  set ddns-fwd-name = "855a53401bc8.jiznardo.org.";
+  client-hostname "855a53401bc8";
+}
+lease 72.28.1.49 {
+  starts 4 2020/04/09 19:02:02;
+  ends 4 2020/04/09 19:12:02;
+  cltt 4 2020/04/09 19:02:02;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:05;
+  set ddns-rev-name = "49.1.28.72.in-addr.arpa.";
+  set ddns-txt = "00df634d5065202bc34bd219f17923636a";
+  set ddns-fwd-name = "0676df81a89b.jiznardo.org.";
+  client-hostname "0676df81a89b";
+}
+lease 72.28.1.46 {
+  starts 4 2020/04/09 19:02:02;
+  ends 4 2020/04/09 19:12:02;
+  cltt 4 2020/04/09 19:02:02;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:02;
+  set ddns-rev-name = "46.1.28.72.in-addr.arpa.";
+  set ddns-txt = "00f3ea2f12c073a419c5b0ed2dff1ff763";
+  set ddns-fwd-name = "a3dc2eb4f271.jiznardo.org.";
+  client-hostname "a3dc2eb4f271";
+}
+lease 72.28.1.48 {
+  starts 4 2020/04/09 19:02:25;
+  ends 4 2020/04/09 19:12:25;
+  cltt 4 2020/04/09 19:02:25;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:04;
+  set ddns-rev-name = "48.1.28.72.in-addr.arpa.";
+  set ddns-txt = "00cadabbbd32483aa9b6ac32b20cd6df7d";
+  set ddns-fwd-name = "a44a200523ea.jiznardo.org.";
+  client-hostname "a44a200523ea";
+}
+lease 72.28.1.47 {
+  starts 4 2020/04/09 19:02:47;
+  ends 4 2020/04/09 19:12:47;
+  cltt 4 2020/04/09 19:02:47;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 02:42:48:1c:00:06;
+  set ddns-rev-name = "47.1.28.72.in-addr.arpa.";
+  set ddns-txt = "004d977deffc49f2421ba8d132c6367952";
+  set ddns-fwd-name = "3c1c8ea990ac.jiznardo.org.";
+  client-hostname "3c1c8ea990ac";
+}

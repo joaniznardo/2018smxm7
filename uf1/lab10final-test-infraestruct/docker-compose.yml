@@ -1,0 +1,81 @@
+#version: '3.7'
+# descartada/aparcada la versió 3.7, doncs els fitxers de configuració (configs:) sols aprofiten xls swarms
+version: '2'
+
+services:
+  
+  dhcpclient1:
+    image: joaniznardo/ubuntum7base
+    privileged: true
+    shm_size: 100m
+    depends_on:
+      - dnsserver
+      - dhcpserver
+    hostname: dhcpclient1        
+    container_name: dhcpclient1        
+    mac_address: 00:11:22:33:44:55
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    networks:
+      x1:
+              #        ipv4_address: 72.28.1.101        
+
+  dhcpclient3:
+    image: joaniznardo/ubuntum7base
+    privileged: true
+    shm_size: 100m
+    depends_on:
+      - dnsserver
+      - dhcpserver
+    command: ["bash", "-c", "umount /etc/resolv.conf && ip a flush dev eth0 && dhclient eth0 && supervisord -n"]
+    #    command: ["supervisord","-n"]
+    # hostname: dhcpclient3        
+    #    container_name: dhcpclient3        
+    #    mac_address: 00:11:22:33:44:77
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    networks:
+      x1:
+              #        ipv4_address: 72.28.1.103        
+
+  dhcpserver:
+    image: joaniznardo/ubuntum7dhcp2
+    privileged: true
+    shm_size: 100m
+    hostname: dhcpserver
+    container_name: dhcpserver
+    depends_on:
+      - dnsserver
+        #    command: ["bash", "-c", "service isc-dhcp-server restart && supervisord -n"]
+    networks:
+      x1:
+        ipv4_address: 72.28.1.100
+
+
+  dnsserver:
+    image: joaniznardo/ubuntum7dnsbind
+    privileged: true
+    shm_size: 100m
+    hostname: dnsserver
+    container_name: dnsserver
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    networks:
+      x1:
+        ipv4_address: 72.28.1.90
+
+networks:
+  x1:
+    ipam:
+      driver: default
+      config:
+        - subnet: 72.28.0.0/16
+          #          ip_range: 72.28.1.0/24
+          #gateway: 72.28.1.1
+          #aux_addresses:
+          #  host0: 72.28.1.0
+          #  host1: 72.28.1.2
+          # #            host2: 72.28.1.3

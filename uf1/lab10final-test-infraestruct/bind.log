@@ -1,0 +1,26 @@
+09-Apr-2020 18:48:15.183 general: info: managed-keys-zone: loaded serial 0
+09-Apr-2020 18:48:15.184 general: info: zone 0.in-addr.arpa/IN: loaded serial 1
+09-Apr-2020 18:48:15.199 general: info: zone 127.in-addr.arpa/IN: loaded serial 1
+09-Apr-2020 18:48:15.199 general: info: zone jiznardo.org/IN: loaded serial 2018110600
+09-Apr-2020 18:48:15.201 general: info: zone 1.28.72.in-addr.arpa/IN: loaded serial 2018110600
+09-Apr-2020 18:48:15.204 general: info: zone 255.in-addr.arpa/IN: loaded serial 1
+09-Apr-2020 18:48:15.204 general: info: zone localhost/IN: loaded serial 2
+09-Apr-2020 18:48:15.204 general: notice: all zones loaded
+09-Apr-2020 18:48:15.205 general: notice: running
+09-Apr-2020 18:48:15.206 notify: info: zone jiznardo.org/IN: sending notifies (serial 2018110600)
+09-Apr-2020 18:48:15.206 notify: info: zone 1.28.72.in-addr.arpa/IN: sending notifies (serial 2018110600)
+09-Apr-2020 18:48:15.244 general: info: managed-keys-zone: Key 20326 for zone . acceptance timer complete: key now trusted
+09-Apr-2020 18:48:20.044 update-security: info: client 72.28.1.100#9737/key rndc-key: signer "rndc-key" approved
+09-Apr-2020 18:48:20.044 update: info: client 72.28.1.100#9737/key rndc-key: updating zone 'jiznardo.org/IN': adding an RR at '855a53401bc8.jiznardo.org' A
+09-Apr-2020 18:48:20.044 update: info: client 72.28.1.100#9737/key rndc-key: updating zone 'jiznardo.org/IN': adding an RR at '855a53401bc8.jiznardo.org' TXT
+09-Apr-2020 18:48:20.054 update-security: info: client 72.28.1.100#9737/key rndc-key: signer "rndc-key" approved
+09-Apr-2020 18:48:20.054 update: info: client 72.28.1.100#9737/key rndc-key: updating zone '1.28.72.in-addr.arpa/IN': deleting rrset at '45.1.28.72.in-addr.arpa' PTR
+09-Apr-2020 18:48:20.054 update: info: client 72.28.1.100#9737/key rndc-key: updating zone '1.28.72.in-addr.arpa/IN': adding an RR at '45.1.28.72.in-addr.arpa' PTR
+09-Apr-2020 18:48:20.206 notify: info: zone jiznardo.org/IN: sending notifies (serial 2018110601)
+09-Apr-2020 18:48:20.206 notify: info: zone 1.28.72.in-addr.arpa/IN: sending notifies (serial 2018110601)
+09-Apr-2020 18:48:22.703 update-security: info: client 72.28.1.100#9737/key rndc-key: signer "rndc-key" approved
+09-Apr-2020 18:48:22.703 update: info: client 72.28.1.100#9737/key rndc-key: updating zone 'jiznardo.org/IN': adding an RR at 'client150.jiznardo.org' A
+09-Apr-2020 18:48:22.703 update: info: client 72.28.1.100#9737/key rndc-key: updating zone 'jiznardo.org/IN': adding an RR at 'client150.jiznardo.org' TXT
+09-Apr-2020 18:48:22.715 update-security: info: client 72.28.1.100#9737/key rndc-key: signer "rndc-key" approved
+09-Apr-2020 18:48:22.715 update: info: client 72.28.1.100#9737/key rndc-key: updating zone '1.28.72.in-addr.arpa/IN': deleting rrset at '150.1.28.72.in-addr.arpa' PTR
+09-Apr-2020 18:48:22.715 update: info: client 72.28.1.100#9737/key rndc-key: updating zone '1.28.72.in-addr.arpa/IN': adding an RR at '150.1.28.72.in-addr.arpa' PTR

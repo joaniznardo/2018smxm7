@@ -1,0 +1,28 @@
+; IPv4 zone file for lab22.jiznardo.org
+$TTL 2d
+;$TTL    604800 ;en segons
+; default TTL for zone
+$ORIGIN jiznardo.org. ; base domain-name
+
+; Start of Authority record defining the key characteristics
+
+;name ttl class rr name-server e-mail sn refresh retry expiry nxdomain
+;@ 		IN		SOA		dns1.jiznardo.org. admin.jiznardo.org. 2017110600 3h 15m 3w 3h
+@       IN      SOA     dns1.jiznardo.org. admin.jiznardo.org. (
+         2018110600     ; Serial
+				 3h     ; Refresh
+                15m     ; Retry
+                 3w     ; Expire
+                 3h )   ; Negative Cache TTL
+;
+; name servers - NS records
+     IN      NS      dns1.jiznardo.org. 
+     IN      NS      dns2.jiznardo.org.
+
+; name servers - A records
+dns1.jiznardo.org.          IN      A       72.28.1.90
+dns2.jiznardo.org.          IN      A       72.28.1.88
+
+; 10.128.0.0/16 - A records
+client01.jiznardo.org.        IN      A      72.28.1.101
+client02.jiznardo.org.        IN      A      72.28.1.102

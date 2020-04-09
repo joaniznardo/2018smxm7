@@ -1,0 +1,77 @@
+reading from file intern.pcap, link-type EN10MB (Ethernet)
+18:48:22.702675 IP (tos 0x10, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 328)
+    0.0.0.0.68 > 255.255.255.255.67: BOOTP/DHCP, Request from 00:11:22:33:44:55, length 300, xid 0x9c7c7c5a, Flags [none]
+	  Client-Ethernet-Address 00:11:22:33:44:55
+	  Vendor-rfc1048 Extensions
+	    Magic Cookie 0x63825363
+	    DHCP-Message Option 53, length 1: Discover
+	    Hostname Option 12, length 11: "dhcpclient1"
+	    Parameter-Request Option 55, length 13: 
+	      Subnet-Mask, BR, Time-Zone, Default-Gateway
+	      Domain-Name, Domain-Name-Server, Option 119, Hostname
+	      Netbios-Name-Server, Netbios-Scope, MTU, Classless-Static-Route
+	      NTP
+18:48:22.702842 IP (tos 0x10, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 344)
+    72.28.1.100.67 > 72.28.1.150.68: BOOTP/DHCP, Reply, length 316, xid 0x9c7c7c5a, Flags [none]
+	  Your-IP 72.28.1.150
+	  Server-IP 72.28.1.100
+	  Client-Ethernet-Address 00:11:22:33:44:55
+	  Vendor-rfc1048 Extensions
+	    Magic Cookie 0x63825363
+	    DHCP-Message Option 53, length 1: Offer
+	    Server-ID Option 54, length 4: 72.28.1.100
+	    Lease-Time Option 51, length 4: 600
+	    Subnet-Mask Option 1, length 4: 255.255.255.0
+	    Default-Gateway Option 3, length 4: 72.28.1.100
+	    Domain-Name Option 15, length 12: "jiznardo.org"
+	    Domain-Name-Server Option 6, length 8: 70.28.1.90,9.9.9.9
+	    Hostname Option 12, length 22: "client150.jiznardo.org"
+18:48:22.702963 IP (tos 0x10, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 328)
+    0.0.0.0.68 > 255.255.255.255.67: BOOTP/DHCP, Request from 00:11:22:33:44:55, length 300, xid 0x9c7c7c5a, Flags [none]
+	  Client-Ethernet-Address 00:11:22:33:44:55
+	  Vendor-rfc1048 Extensions
+	    Magic Cookie 0x63825363
+	    DHCP-Message Option 53, length 1: Request
+	    Server-ID Option 54, length 4: 72.28.1.100
+	    Requested-IP Option 50, length 4: 72.28.1.150
+	    Hostname Option 12, length 11: "dhcpclient1"
+	    Parameter-Request Option 55, length 13: 
+	      Subnet-Mask, BR, Time-Zone, Default-Gateway
+	      Domain-Name, Domain-Name-Server, Option 119, Hostname
+	      Netbios-Name-Server, Netbios-Scope, MTU, Classless-Static-Route
+	      NTP
+18:48:22.703096 IP (tos 0x0, ttl 64, id 4831, offset 0, flags [none], proto UDP (17), length 221)
+    72.28.1.100.9737 > 72.28.1.90.53: 11957 update [1a] [2n] [1au] SOA? jiznardo.org. (193)
+18:48:22.703209 IP (tos 0x10, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 344)
+    72.28.1.100.67 > 72.28.1.150.68: BOOTP/DHCP, Reply, length 316, xid 0x9c7c7c5a, Flags [none]
+	  Your-IP 72.28.1.150
+	  Server-IP 72.28.1.100
+	  Client-Ethernet-Address 00:11:22:33:44:55
+	  Vendor-rfc1048 Extensions
+	    Magic Cookie 0x63825363
+	    DHCP-Message Option 53, length 1: ACK
+	    Server-ID Option 54, length 4: 72.28.1.100
+	    Lease-Time Option 51, length 4: 600
+	    Subnet-Mask Option 1, length 4: 255.255.255.0
+	    Default-Gateway Option 3, length 4: 72.28.1.100
+	    Domain-Name Option 15, length 12: "jiznardo.org"
+	    Domain-Name-Server Option 6, length 8: 70.28.1.90,9.9.9.9
+	    Hostname Option 12, length 22: "client150.jiznardo.org"
+18:48:22.715473 IP (tos 0x0, ttl 64, id 21509, offset 0, flags [none], proto UDP (17), length 136)
+    72.28.1.90.53 > 72.28.1.100.9737: 11957 update 0/0/1 (108)
+18:48:22.715681 IP (tos 0x0, ttl 64, id 4835, offset 0, flags [none], proto UDP (17), length 196)
+    72.28.1.100.9737 > 72.28.1.90.53: 25794 update [2n] [1au] SOA? 1.28.72.in-addr.arpa. (168)
+18:48:22.720241 IP (tos 0x0, ttl 64, id 21514, offset 0, flags [none], proto UDP (17), length 144)
+    72.28.1.90.53 > 72.28.1.100.9737: 25794 update 0/0/1 (116)
+18:48:22.733244 IP (tos 0x10, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 328)
+    0.0.0.0.68 > 255.255.255.255.67: BOOTP/DHCP, Request from 02:42:48:1c:00:02, length 300, xid 0xc5c9234c, secs 10, Flags [none]
+	  Client-Ethernet-Address 02:42:48:1c:00:02
+	  Vendor-rfc1048 Extensions
+	    Magic Cookie 0x63825363
+	    DHCP-Message Option 53, length 1: Discover
+	    Hostname Option 12, length 12: "a3dc2eb4f271"
+	    Parameter-Request Option 55, length 13: 
+	      Subnet-Mask, BR, Time-Zone, Default-Gateway
+	      Domain-Name, Domain-Name-Server, Option 119, Hostname
+	      Netbios-Name-Server, Netbios-Scope, MTU, Classless-Static-Route
+	      NTP

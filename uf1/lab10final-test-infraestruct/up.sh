@@ -6,7 +6,7 @@ set -x
 
 export SLEEP_COMPOSE=1
 export SLEEP_DHCPSERVER=1
-docker-compose -f docker-compose.yml up -d
+docker-compose -f docker-compose.yml up -d --scale dhcpclient3=5
 sleep $SLEEP_COMPOSE
 
 #############################
@@ -77,13 +77,13 @@ docker exec dhcpclient1 cat /etc/resolv.conf
 echo -e "\nalliberem el server del tcpdump"
 docker exec -it dhcpserver pkill tcpdump
 
-docker exec dhcpclient2 ip a flush dev eth0
-docker exec dhcpclient2 /bin/bash -c "umount /etc/resolv.conf"
-docker exec dhcpclient2 /bin/bash -c "dhclient eth0;"
+#docker exec dhcpclient2 ip a flush dev eth0
+#docker exec dhcpclient2 /bin/bash -c "umount /etc/resolv.conf"
+#docker exec dhcpclient2 /bin/bash -c "dhclient eth0;"
 
-docker exec dhcpclient3 ip a flush dev eth0
-docker exec dhcpclient3 /bin/bash -c "umount /etc/resolv.conf"
-docker exec dhcpclient3 /bin/bash -c "dhclient eth0;"
+#docker exec dhcpclient3 ip a flush dev eth0
+#docker exec dhcpclient3 /bin/bash -c "umount /etc/resolv.conf"
+#docker exec dhcpclient3 /bin/bash -c "dhclient eth0;"
 
 echo -e "\nRevisem la captura"
 #docker exec -ti dhcpserver tcpdump -r dhcpserver.pcap
@@ -92,5 +92,11 @@ docker exec -ti dhcpserver tcpdump -n -v -r intern.pcap | tee extern.pcap.txt
 echo -e "\nConservem l'original per si volem fer-lo servir amb wireshark" 
 docker cp dhcpserver:intern.pcap extern.pcap
 
-echo -e "\nConservem el LOG per determinar què passa al nostre servidor"
+echo -e "\nConservem el LOG del dnsserver per determinar què passa al nostre servidor"
 docker cp dnsserver:/var/lib/bind/bind.log bind.log
+
+echo -e "\nConservem el registre dels préstecs de les ips del servidor"
+docker cp dhcpserver:/var/lib/dhcp/dhcpd.leases dhcp.leases
+
+echo -e "\nConservem el registre dels préstecs al propi client"
+docker cp dhcpclient1:/var/lib/dhcp/dhclient.leases dhcclient.leases.client1
