@@ -15,7 +15,9 @@ sleep $SLEEP_COMPOSE
 
 docker cp bindserver01/rndc.key  dnsserver:/etc/bind/rndc.key.tmp
 docker exec dnsserver cp /etc/bind/rndc.key{.tmp,}
+docker cp bindserver01/named.conf  dnsserver:/etc/bind/named.conf
 docker cp bindserver01/named.conf.local  dnsserver:/etc/bind/named.conf.local
+docker cp bindserver01/named.conf.log    dnsserver:/etc/bind/named.conf.log  
 docker cp bindserver01/named.conf.options dnsserver:/etc/bind/named.conf.options
 #docker cp bindserver01/zones dnsserver:/etc/bind/zones
 docker cp bindserver01/zones/db.jiznardo.org dnsserver:/var/lib/bind
@@ -40,7 +42,7 @@ docker exec dhcpserver /bin/bash -c "service isc-dhcp-server restart;service isc
 ## observant a posteriori via fitxer: obtindrem un fitxer "intern" al container que podem recuperar amb un "docker cp ..."
 ## >> (docker exec -t dhcpserver tcpdump --immediate-mode -w intern.pcap -v -i eth0 -n port bootps or bootpc)&
 ## ******************** la clau està en > --immediate-mode < doncs forcem al nucli a escriure a fitxer cada captura !! ;)
-docker exec -dt dhcpserver tcpdump --immediate-mode -w intern.pcap -v -i eth0 -n port bootps or bootpc
+docker exec -dt dhcpserver tcpdump --immediate-mode -w intern.pcap -v -i eth0 -n port bootps or bootpc or domain
 sleep $SLEEP_DHCPSERVER
 
 #############################
@@ -89,3 +91,5 @@ docker exec -ti dhcpserver tcpdump -n -v -r intern.pcap | tee extern.pcap.txt
 
 echo -e "\nConservem l'original per si volem fer-lo servir amb wireshark" 
 docker cp dhcpserver:intern.pcap extern.pcap
+
+echo -e "\nConservem el LOG per determinar què passa al nostre servidor"
