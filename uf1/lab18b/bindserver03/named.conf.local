@@ -1,0 +1,24 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+zone "jiznardo.org" {
+    type slave;
+    file "/var/cache/bind/db.jiznardo.org"; # zone file path
+    masters { 72.28.1.100;    };           # ns1 private IP address - primary
+};
+zone "j20200331iznardo.edu" {
+    type slave;
+    file "/var/cache/bind/db.j20200331iznardo.edu"; # zone file path
+    masters { 72.28.1.100;    };           # ns1 private IP address - primary
+};
+
+zone "1.28.72.in-addr.arpa" {
+    type slave;
+    file "/var/cache/bind/db.1.28.72";  # /24 subnet
+    masters { 72.28.1.100; };    # ns1 private IP address - primary
+};

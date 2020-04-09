@@ -16,13 +16,23 @@ docker exec dnsserver /bin/bash -c "service bind9 restart;service bind9 status"
 sleep 1 
 
 #############################
-###### dnserver - secundari #
+###### dnserver - secundari 1
 #############################
 
 docker cp bindserver02/named.conf.local  dnsserver2:/etc/bind/named.conf.local
 docker cp bindserver02/named.conf.options dnsserver2:/etc/bind/named.conf.options
 docker cp bindserver02/zones dnsserver2:/etc/bind/zones
 docker exec dnsserver2 /bin/bash -c "service bind9 restart;service bind9 status"
+sleep 1 
+
+#############################
+###### dnserver - secundari 2
+#############################
+
+docker cp bindserver03/named.conf.local  dnsserver3:/etc/bind/named.conf.local
+docker cp bindserver03/named.conf.options dnsserver3:/etc/bind/named.conf.options
+docker cp bindserver03/zones dnsserver3:/etc/bind/zones
+docker exec dnsserver3 /bin/bash -c "service bind9 restart;service bind9 status"
 sleep 1 
 
 #############################
@@ -69,7 +79,7 @@ docker exec dhcpclient01 /bin/sh -c "dig @72.28.1.100  client04.j20200331iznardo
 docker exec dhcpclient01 /bin/sh -c "dig @72.28.1.100 -x 72.28.1.102"
 docker exec dhcpclient01 /bin/sh -c "dig @72.28.1.100 -x 72.28.1.105"
 echo "------- aturem el dnsserver (1)        ------------"
-docker stop dnsserver
+docker stop dnsserver2
 echo "------- ...després d'aturar server1 - comprovem els container actius ------------"
 docker-compose ps
 echo "------- ...després d'aturar server1 - ping client01 > client01       ------------"

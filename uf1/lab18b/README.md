@@ -1,5 +1,6 @@
-# lab18
-## servidor dns bind - una única xarxa - creació d'un servidor de domini autoritari (de referència) amb un servidor de recolzament.
+# lab18b
+## POC - multi recolzament: els clients sols pregunten als servidors de backup!! :)
+## servidor dns bind - una única xarxa - creació d'un servidor de domini autoritari (de referència) amb DOS servidors de recolzament.
 
 ## molt important
 

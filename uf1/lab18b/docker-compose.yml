@@ -93,6 +93,19 @@ services:
       x1:
         ipv4_address: 72.28.1.98
   
+  dnsserver3:
+    image: joaniznardo/ubuntum7dnsbind
+    privileged: true
+    mem_limit: 100m
+    hostname: dnsserver3
+    container_name: dnsserver3
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    networks:
+      x1:
+        ipv4_address: 72.28.1.97
+  
 networks:
   x1:
     ipam:
