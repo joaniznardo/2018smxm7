@@ -1,4 +1,4 @@
-# lab01
+# lab05
 ## servidor dhcp dnsmasq - una única xarxa - configuració d'ips estàtiques per mac address, commbinat amb ips dinàmques 
 
 ### Per a la realització d'aquests labs (dhcp) i atés que docker assigna una ip de manera automàtica als contenidors associats a una xarxa, farem servir el següent hack
