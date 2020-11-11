@@ -49,8 +49,8 @@ services:
     depends_on:
       - dnsserver
     # el següent no funciona pq quan arranca isc-dhcp-server no té associada una ip a INTERFACE: se podria fer un sed...
-    # command: ["bash", "-c", "service rsyslog start && service isc-dhcp-server restart && supervisord -n"]
-    command: ["bash", "-c", "service rsyslog start && service isc-dhcp-server restart && supervisord -n"]
+    # command: ["bash", "-c", "service rsyslog start && sed -e '/INTERFACES/s/""/"eth0"/' /etc/default/isc-dhcp-server && service isc-dhcp-server restart && supervisord -n"]
+    command: ["bash", "-c", "service rsyslog start &&  supervisord -n"]
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
