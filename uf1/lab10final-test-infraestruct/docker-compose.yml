@@ -48,7 +48,7 @@ services:
     container_name: dhcpserver
     depends_on:
       - dnsserver
-        #    command: ["bash", "-c", "service isc-dhcp-server restart && supervisord -n"]
+    command: ["bash", "-c", "service rsyslog start && service isc-dhcp-server restart && supervisord -n"]
     networks:
       x1:
         ipv4_address: 72.28.1.100
