@@ -1,0 +1,27 @@
+Nov 12 11:41:19 dhcpserver1 rsyslogd: [origin software="rsyslogd" swVersion="7.4.4" x-pid="17" x-info="http://www.rsyslog.com"] start
+Nov 12 11:41:19 dhcpserver1 rsyslogd: rsyslogd's groupid changed to 104
+Nov 12 11:41:19 dhcpserver1 rsyslogd: rsyslogd's userid changed to 101
+Nov 12 11:41:19 dhcpserver1 rsyslogd-2039: Could no open output pipe '/dev/xconsole': Permission denied [try http://www.rsyslog.com/e/2039 ]
+Nov 12 11:41:19 dhcpserver1 dhcpd: Wrote 0 leases to leases file.
+Nov 12 11:41:19 dhcpserver1 dhcpd: failover peer dhcp-failover: I move from recover to startup
+Nov 12 11:41:21 dhcpserver1 dhcpd: failover peer dhcp-failover: peer moves from unknown-state to recover
+Nov 12 11:41:21 dhcpserver1 dhcpd: failover peer dhcp-failover: requesting full update from peer
+Nov 12 11:41:21 dhcpserver1 dhcpd: failover peer dhcp-failover: I move from startup to recover
+Nov 12 11:41:21 dhcpserver1 dhcpd: Sent update request all message to dhcp-failover
+Nov 12 11:41:21 dhcpserver1 dhcpd: failover peer dhcp-failover: peer moves from recover to recover
+Nov 12 11:41:21 dhcpserver1 dhcpd: failover peer dhcp-failover: requesting full update from peer
+Nov 12 11:41:21 dhcpserver1 dhcpd: Update request all from dhcp-failover: sending update
+Nov 12 11:41:21 dhcpserver1 dhcpd: failover peer dhcp-failover: peer update completed.
+Nov 12 11:41:21 dhcpserver1 dhcpd: failover peer dhcp-failover: I move from recover to recover-done
+Nov 12 11:41:21 dhcpserver1 dhcpd: Sent update done message to dhcp-failover
+Nov 12 11:41:21 dhcpserver1 dhcpd: failover peer dhcp-failover: peer moves from recover to recover-done
+Nov 12 11:41:21 dhcpserver1 dhcpd: Both servers have entered recover-done!
+Nov 12 11:41:21 dhcpserver1 dhcpd: failover peer dhcp-failover: I move from recover-done to normal
+Nov 12 11:41:21 dhcpserver1 dhcpd: balancing pool 563ac0c06ba0 72.28.1.0/24  total 41  free 41  backup 0  lts 20  max-own (+/-)4
+Nov 12 11:41:21 dhcpserver1 dhcpd: balanced pool 563ac0c06ba0 72.28.1.0/24  total 41  free 21  backup 20  lts 0  max-misbal 6
+Nov 12 11:41:22 dhcpserver1 dhcpd: Sending updates to dhcp-failover.
+Nov 12 11:41:22 dhcpserver1 dhcpd: failover peer dhcp-failover: peer moves from recover-done to normal
+Nov 12 11:41:23 dhcpserver1 dhcpd: DHCPDISCOVER from 02:42:48:1c:00:03 via eth0: load balance to peer dhcp-failover
+Nov 12 11:41:23 dhcpserver1 dhcpd: DHCPDISCOVER from 02:42:48:1c:00:02 via eth0: load balance to peer dhcp-failover
+Nov 12 11:41:24 dhcpserver1 dhcpd: DHCPREQUEST for 72.28.1.59 (72.28.1.99) from 02:42:48:1c:00:03 via eth0: lease owned by peer
+Nov 12 11:41:24 dhcpserver1 dhcpd: DHCPREQUEST for 72.28.1.58 (72.28.1.99) from 02:42:48:1c:00:02 via eth0: lease owned by peer

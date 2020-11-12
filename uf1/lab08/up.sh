@@ -1,38 +1,31 @@
 #!/bin/bash
-
-docker-compose -f docker-compose.yml up -d
-sleep 10
-
-
-#############################
-###### dhcpserver1     ######
-#############################
-
-
-docker cp isc-dhcp-server.server1 dhcpserver1:/etc/default/isc-dhcp-server
-docker cp dhcpd.conf.server1  dhcpserver1:/etc/dhcp/dhcpd.conf
-docker exec dhcpserver1 /bin/bash -c "service isc-dhcp-server restart;service isc-dhcp-server status"
-sleep 2 
-
-#############################
-###### dhcpserver2     ######
-#############################
-
-
-docker cp isc-dhcp-server.server2 dhcpserver2:/etc/default/isc-dhcp-server
-docker cp dhcpd.conf.server2  dhcpserver2:/etc/dhcp/dhcpd.conf
-docker exec dhcpserver2 /bin/bash -c "service isc-dhcp-server restart;service isc-dhcp-server status"
-sleep 2 
-
-#############################
-###### dhcpclient      ######
-#############################
-
-docker exec dhcpclient1 /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"
-
-#############################
-###### dhcpclient2     ######
-#############################
-
-docker exec dhcpclient2 /bin/bash -c "dhclient eth0; dhclient -r eth0; dhclient eth0"
-
+set -x
+docker-compose -f docker-compose.yml up -d --scale dhcpclient=2 --scale dhcpserver1=1 --scale=dhcpserver2=1
+sleep 3
+docker exec -it dhcpserver1 /bin/bash -c "grep -v kernel /var/log/syslog" | tee server1_1-syslog.txt
+docker exec -it dhcpserver2 /bin/bash -c "grep -v kernel /var/log/syslog" | tee server2_1-syslog.txt
+docker-compose -f docker-compose.yml up -d --scale dhcpclient=2 --scale dhcpserver1=0 --scale=dhcpserver2=1
+sleep 3
+docker exec -it dhcpserver2 /bin/bash -c "grep -v kernel /var/log/syslog" | tee server2_2-syslog.txt
+docker-compose -f docker-compose.yml up -d --scale dhcpclient=5 --scale dhcpserver1=0 --scale=dhcpserver2=1
+sleep 3
+docker exec -it dhcpserver2 /bin/bash -c "grep -v kernel /var/log/syslog" | tee server2_3-syslog.txt
+docker-compose -f docker-compose.yml up -d --scale dhcpclient=5 --scale dhcpserver1=1 --scale=dhcpserver2=1
+sleep 3
+docker exec -it dhcpserver1 /bin/bash -c "grep -v kernel /var/log/syslog" | tee server1_4-syslog.txt
+docker exec -it dhcpserver2 /bin/bash -c "grep -v kernel /var/log/syslog" | tee server2_4-syslog.txt
+docker-compose -f docker-compose.yml up -d --scale dhcpclient=3 --scale dhcpserver1=1 --scale=dhcpserver2=1
+sleep 3
+docker exec -it dhcpserver1 /bin/bash -c "grep -v kernel /var/log/syslog" | tee server1_5-syslog.txt
+docker exec -it dhcpserver2 /bin/bash -c "grep -v kernel /var/log/syslog" | tee server2_5-syslog.txt
+docker-compose -f docker-compose.yml up -d --scale dhcpclient=3 --scale dhcpserver1=1 --scale=dhcpserver2=0
+sleep 3
+docker exec -it dhcpserver1 /bin/bash -c "grep -v kernel /var/log/syslog" | tee server1_6-syslog.txt
+docker-compose -f docker-compose.yml up -d --scale dhcpclient=9 --scale dhcpserver1=1 --scale=dhcpserver2=0
+sleep 3
+docker exec -it dhcpserver1 /bin/bash -c "grep -v kernel /var/log/syslog" | tee server1_7-syslog.txt
+docker-compose -f docker-compose.yml up -d --scale dhcpclient=9 --scale dhcpserver1=1 --scale=dhcpserver2=1
+sleep 3
+docker exec -it dhcpserver1 /bin/bash -c "grep -v kernel /var/log/syslog" | tee server1_8-syslog.txt
+docker exec -it dhcpserver2 /bin/bash -c "grep -v kernel /var/log/syslog" | tee server2_8-syslog.txt
+docker ps

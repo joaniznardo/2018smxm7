@@ -1,0 +1,12 @@
+Nov 12 11:41:51 dhcpserver1 rsyslogd: [origin software="rsyslogd" swVersion="7.4.4" x-pid="17" x-info="http://www.rsyslog.com"] start
+Nov 12 11:41:51 dhcpserver1 rsyslogd: rsyslogd's groupid changed to 104
+Nov 12 11:41:51 dhcpserver1 rsyslogd: rsyslogd's userid changed to 101
+Nov 12 11:41:51 dhcpserver1 rsyslogd-2039: Could no open output pipe '/dev/xconsole': Permission denied [try http://www.rsyslog.com/e/2039 ]
+Nov 12 11:41:51 dhcpserver1 dhcpd: Wrote 0 leases to leases file.
+Nov 12 11:41:51 dhcpserver1 dhcpd: failover peer dhcp-failover: I move from recover to startup
+Nov 12 11:41:51 dhcpserver1 dhcpd: failover peer dhcp-failover: peer moves from unknown-state to communications-interrupted
+Nov 12 11:41:51 dhcpserver1 dhcpd: failover peer dhcp-failover: I move from startup to recover
+Nov 12 11:41:51 dhcpserver1 dhcpd: Sent update request all message to dhcp-failover
+Nov 12 11:41:51 dhcpserver1 dhcpd: failover peer dhcp-failover: peer moves from communications-interrupted to partner-down
+Nov 12 11:41:53 dhcpserver1 dhcpd: failover peer dhcp-failover: peer update completed.
+Nov 12 11:41:53 dhcpserver1 dhcpd: failover peer dhcp-failover: I move from recover to recover-wait

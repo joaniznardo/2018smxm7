@@ -1,0 +1,90 @@
+Nov 12 11:41:20 dhcpserver2 rsyslogd: [origin software="rsyslogd" swVersion="7.4.4" x-pid="17" x-info="http://www.rsyslog.com"] start
+Nov 12 11:41:20 dhcpserver2 rsyslogd: rsyslogd's groupid changed to 104
+Nov 12 11:41:20 dhcpserver2 rsyslogd: rsyslogd's userid changed to 101
+Nov 12 11:41:20 dhcpserver2 rsyslogd-2039: Could no open output pipe '/dev/xconsole': Permission denied [try http://www.rsyslog.com/e/2039 ]
+Nov 12 11:41:21 dhcpserver2 dhcpd: Wrote 0 leases to leases file.
+Nov 12 11:41:21 dhcpserver2 dhcpd: failover peer dhcp-failover: I move from recover to startup
+Nov 12 11:41:21 dhcpserver2 dhcpd: failover peer dhcp-failover: peer moves from unknown-state to recover
+Nov 12 11:41:21 dhcpserver2 dhcpd: failover peer dhcp-failover: requesting full update from peer
+Nov 12 11:41:21 dhcpserver2 dhcpd: failover peer dhcp-failover: I move from startup to recover
+Nov 12 11:41:21 dhcpserver2 dhcpd: Sent update request all message to dhcp-failover
+Nov 12 11:41:21 dhcpserver2 dhcpd: failover peer dhcp-failover: peer moves from recover to recover
+Nov 12 11:41:21 dhcpserver2 dhcpd: failover peer dhcp-failover: requesting full update from peer
+Nov 12 11:41:21 dhcpserver2 dhcpd: Update request all from dhcp-failover: sending update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.40 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.41 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.42 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.43 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.44 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.45 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.46 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.47 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.48 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.49 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.50 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.51 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.52 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.53 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.54 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.55 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.56 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.57 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.58 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.59 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.60 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.61 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.62 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.63 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.64 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.65 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.66 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.67 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.68 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.69 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.70 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.71 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.72 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.73 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.74 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.75 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.76 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.77 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.78 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.79 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: bind update on 72.28.1.80 from dhcp-failover rejected: incoming update is less critical than outgoing update
+Nov 12 11:41:21 dhcpserver2 dhcpd: Sent update done message to dhcp-failover
+Nov 12 11:41:21 dhcpserver2 dhcpd: failover peer dhcp-failover: peer moves from recover to recover-done
+Nov 12 11:41:21 dhcpserver2 dhcpd: failover peer dhcp-failover: peer update completed.
+Nov 12 11:41:21 dhcpserver2 dhcpd: failover peer dhcp-failover: I move from recover to recover-done
+Nov 12 11:41:22 dhcpserver2 dhcpd: failover peer dhcp-failover: peer moves from recover-done to normal
+Nov 12 11:41:22 dhcpserver2 dhcpd: failover peer dhcp-failover: I move from recover-done to normal
+Nov 12 11:41:22 dhcpserver2 dhcpd: balancing pool 55872f325b70 72.28.1.0/24  total 41  free 41  backup 0  lts -20  max-own (+/-)4
+Nov 12 11:41:22 dhcpserver2 dhcpd: balanced pool 55872f325b70 72.28.1.0/24  total 41  free 41  backup 0  lts -20  max-misbal 6
+Nov 12 11:41:23 dhcpserver2 dhcpd: DHCPDISCOVER from 02:42:48:1c:00:03 via eth0
+Nov 12 11:41:23 dhcpserver2 dhcpd: DHCPDISCOVER from 02:42:48:1c:00:02 via eth0
+Nov 12 11:41:24 dhcpserver2 dhcpd: DHCPOFFER on 72.28.1.59 to 02:42:48:1c:00:03 (8a76e6fa100d) via eth0
+Nov 12 11:41:24 dhcpserver2 dhcpd: DHCPREQUEST for 72.28.1.59 (72.28.1.99) from 02:42:48:1c:00:03 (8a76e6fa100d) via eth0
+Nov 12 11:41:24 dhcpserver2 dhcpd: DHCPACK on 72.28.1.59 to 02:42:48:1c:00:03 (8a76e6fa100d) via eth0
+Nov 12 11:41:24 dhcpserver2 dhcpd: DHCPOFFER on 72.28.1.58 to 02:42:48:1c:00:02 (0601eed5c40c) via eth0
+Nov 12 11:41:24 dhcpserver2 dhcpd: DHCPREQUEST for 72.28.1.58 (72.28.1.99) from 02:42:48:1c:00:02 (0601eed5c40c) via eth0
+Nov 12 11:41:24 dhcpserver2 dhcpd: DHCPACK on 72.28.1.58 to 02:42:48:1c:00:02 (0601eed5c40c) via eth0
+Nov 12 11:41:38 dhcpserver2 dhcpd: peer dhcp-failover: disconnected
+Nov 12 11:41:38 dhcpserver2 dhcpd: failover peer dhcp-failover: I move from normal to communications-interrupted
+Nov 12 11:41:45 dhcpserver2 dhcpd: DHCPDISCOVER from 02:42:48:1c:00:06 via eth0
+Nov 12 11:41:45 dhcpserver2 dhcpd: DHCPDISCOVER from 02:42:48:1c:00:05 via eth0
+Nov 12 11:41:46 dhcpserver2 dhcpd: DHCPDISCOVER from 02:42:48:1c:00:04 via eth0
+Nov 12 11:41:46 dhcpserver2 dhcpd: DHCPOFFER on 72.28.1.57 to 02:42:48:1c:00:06 (d72731635322) via eth0
+Nov 12 11:41:46 dhcpserver2 dhcpd: DHCPREQUEST for 72.28.1.57 (72.28.1.99) from 02:42:48:1c:00:06 (d72731635322) via eth0
+Nov 12 11:41:46 dhcpserver2 dhcpd: DHCPACK on 72.28.1.57 to 02:42:48:1c:00:06 (d72731635322) via eth0
+Nov 12 11:41:46 dhcpserver2 dhcpd: DHCPOFFER on 72.28.1.56 to 02:42:48:1c:00:05 (26622d37da13) via eth0
+Nov 12 11:41:46 dhcpserver2 dhcpd: DHCPREQUEST for 72.28.1.56 (72.28.1.99) from 02:42:48:1c:00:05 (26622d37da13) via eth0
+Nov 12 11:41:46 dhcpserver2 dhcpd: DHCPACK on 72.28.1.56 to 02:42:48:1c:00:05 (26622d37da13) via eth0
+Nov 12 11:41:47 dhcpserver2 dhcpd: DHCPOFFER on 72.28.1.55 to 02:42:48:1c:00:04 (2e77bc482eb5) via eth0
+Nov 12 11:41:47 dhcpserver2 dhcpd: DHCPREQUEST for 72.28.1.55 (72.28.1.99) from 02:42:48:1c:00:04 (2e77bc482eb5) via eth0
+Nov 12 11:41:47 dhcpserver2 dhcpd: DHCPACK on 72.28.1.55 to 02:42:48:1c:00:04 (2e77bc482eb5) via eth0
+Nov 12 11:41:51 dhcpserver2 dhcpd: failover peer dhcp-failover: peer moves from normal to recover
+Nov 12 11:41:51 dhcpserver2 dhcpd: failover peer dhcp-failover: I move from communications-interrupted to partner-down
+Nov 12 11:41:51 dhcpserver2 dhcpd: failover peer dhcp-failover: peer moves from recover to recover
+Nov 12 11:41:51 dhcpserver2 dhcpd: Update request all from dhcp-failover: sending update
+Nov 12 11:41:53 dhcpserver2 dhcpd: Sent update done message to dhcp-failover
+Nov 12 11:41:53 dhcpserver2 dhcpd: failover peer dhcp-failover: peer moves from recover to recover-wait
