@@ -31,7 +31,7 @@ services:
       - ./dhcpd.conf.server1:/etc/dhcp/dhcpd.conf
     networks:
       x1:
-        ipv4_address: 72.28.1.100
+        ipv4_address: 72.28.0.100
   
   dhcpserver2:
     image: joaniznardo/ubuntum7dhcp2
@@ -47,7 +47,7 @@ services:
       - ./dhcpd.conf.server2:/etc/dhcp/dhcpd.conf
     networks:
       x1:
-        ipv4_address: 72.28.1.99
+        ipv4_address: 72.28.0.99
   
 networks:
   x1:
