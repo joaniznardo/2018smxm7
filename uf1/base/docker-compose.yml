@@ -1,0 +1,57 @@
+version: '2'
+
+services:
+  
+  client:
+    image: joaniznardo/ubuntum7base
+    privileged: true
+    mem_limit: 100m
+##    hostname: dhcpclient
+##    container_name: dhcpclient
+    depends_on:
+      - server
+    command: ["bash", "-c", "service rsyslog start && ip a flush dev eth0 && dhclient eth0 && supervisord -n"]
+
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    networks:
+      x1:
+##        ipv4_address: 72.28.0.101
+##    volumes:
+##      - ./resolv.conf:/etc/resolv.conf
+##    dns: 
+##      - 71.28.0.100
+##      - 8.8.8.8
+##    dns_search:
+##      - lab11.m7
+    
+  server:
+    image: joaniznardo/ubuntum7base
+    privileged: true
+    mem_limit: 100m
+    hostname: server
+    container_name: server
+    command: ["bash", "-c", "service rsyslog start && supervisord -n"]
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+#    ports:
+#      - "53:53/udp"
+##  volumes:
+##    - ./dhcp.conf.template:/etc/dnsmasq.d/lab11b.conf
+    networks:
+      x1:
+        ipv4_address: 72.28.0.100
+  
+networks:
+  x1:
+    ipam:
+      driver: default
+      config:
+        - subnet: 72.28.0.0/16
+##          ip_range: 72.28.1.0/30
+##          gateway: 72.28.1.1
+##          aux_addresses:
+##            host1: 72.28.1.2
+##            host2: 72.28.1.3
