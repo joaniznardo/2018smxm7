@@ -2,41 +2,59 @@ version: '2'
 
 services:
   
-  dhcpclient01:
+  client01:
     image: joaniznardo/ubuntum7base
     privileged: true
     mem_limit: 100m
-    hostname: dhcpclient01
-    container_name: dhcpclient01
+    hostname: dnsclient01
+    container_name: dnsclient01
+    depends_on:
+      - dnsresolver
+      - dnsserver
+    command: ["bash", "-c", "/etc/init.d/rsyslog start && /etc/init.d/ssh start && supervisord -n"]
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
+    volumes:
+      - ./resolv.conf:/etc/resolv.conf
     networks:
       x1:
         ipv4_address: 72.28.1.101
     
-  dhcpclient02:
+  client02:
     image: joaniznardo/ubuntum7base
     privileged: true
     mem_limit: 100m
-    hostname: dhcpclient02
-    container_name: dhcpclient02
+    hostname: dnsclient02
+    container_name: dnsclient02
+    depends_on:
+      - dnsresolver
+      - dnsserver
+    command: ["bash", "-c", "/etc/init.d/rsyslog start && /etc/init.d/ssh start && supervisord -n"]
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
+    volumes:
+      - ./resolv.conf:/etc/resolv.conf
     networks:
       x1:
         ipv4_address: 72.28.1.102
     
-  dhcpclient03:
+  client03:
     image: joaniznardo/ubuntum7base
     privileged: true
     mem_limit: 100m
-    hostname: dhcpclient03
-    container_name: dhcpclient03
+    hostname: dnsclient03
+    container_name: dnsclient03
+    depends_on:
+      - dnsresolver
+      - dnsserver
+    command: ["bash", "-c", "/etc/init.d/rsyslog start && /etc/init.d/ssh start && supervisord -n"]
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
+    volumes:
+      - ./resolv.conf:/etc/resolv.conf
     networks:
       x1:
         ipv4_address: 72.28.1.103
@@ -47,28 +65,30 @@ services:
     mem_limit: 100m
     hostname: dnsresolver  
     container_name: dnsresolver  
+    command: ["bash", "-c", "/etc/init.d/rsyslog start && /etc/init.d/ssh start && /etc/init.d/dnsmasq start && supervisord -n"]
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
+    volumes:
+      - ./000_dns_resolver.conf:/etc/dnsmasq.d/dhcp.conf
     networks:
       x1:
         ipv4_address: 72.28.1.99 
   
   dnsserver:
     image: joaniznardo/ubuntum7dnsbind
-#   image: ubuntulocal/dnsbind:1.0
     privileged: true
     mem_limit: 100m
     hostname: dnsserver
     container_name: dnsserver
+    command: ["bash", "-c", "/etc/init.d/rsyslog start && /etc/init.d/ssh start && /etc/init.d/bind9 start && supervisord -n"]
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
-#   volumes:
-#     - ./dnsserver01/etc/bind:/etc/bind
-#     - ./dnsserver01/etc/default:/etc/default
-#     - ./dnsserver01/var/log/bind:/var/log/bind
-#     - ./dnsserver01/var/cache/bind:/var/cache/bind
+    volumes:
+      - ./bindserver01/named.conf.local:/etc/bind/named.conf.local
+      - ./bindserver01/named.conf.options:/etc/bind/named.conf.options
+      - ./bindserver01/zones:/etc/bind/zones
     networks:
       x1:
         ipv4_address: 72.28.1.100
@@ -79,11 +99,11 @@ networks:
       driver: default
       config:
         - subnet: 72.28.1.0/24
-          ip_range: 72.28.1.0/30
+#          ip_range: 72.28.1.0/30
           gateway: 72.28.1.1
-          aux_addresses:
-            host1: 72.28.1.2
-            host2: 72.28.1.3
+#          aux_addresses:
+#            host1: 72.28.1.2
+#            host2: 72.28.1.3
 #
 #
 
