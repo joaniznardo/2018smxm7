@@ -32,7 +32,7 @@ docker-compose -f docker-compose.yml up -d
 # - acceptar les variables d'entorn per defecte
 docker-compose exec apache bash /etc/apache2/envvars
 # - (re)iniciar el servei
-docker-compose exec apache /usr/sbin/apache2ctl restart
+docker-compose exec apache /etc/init.d/apache2 start
 # - comprovar que està en marxa
 docker-compose exec apache netstat -atnp | grep :80 | wc -l
 
@@ -58,10 +58,10 @@ docker-compose exec apache /usr/sbin/a2ensite  facebook.com
 docker-compose exec apache /usr/sbin/a2ensite  apacheserver.test
 
 #- refrescar i apuntar 
-docker-compose exec apache /usr/sbin/apache2ctl restart
+docker-compose exec apache /etc/init.d/apache2 restart
 
 #- engegar squid 
-docker-compose exec squid  squid3 
+docker-compose exec -T squid  squid3 
 
 ### -- 
 ##  -- etapa 2 - validar que ho hem aconseguit
@@ -70,24 +70,25 @@ docker-compose exec squid  squid3
 
 # accedint per nom
 PROXY="-x 10.28.1.90:3128"
+PROTOCOL="http://"
 NOM_SERVER=www.serverjoan.lab42
 echo -e "\n${yellow}Validació: comprovació des del client (per nom - $NOM_SERVER ) ${endColor}\n"
-docker-compose exec textclient curl  $PROXY http://$NOM_SERVER
+docker-compose exec textclient curl  $PROXY $PROTOCOL$NOM_SERVER
 
 # accedint per nom
 NOM_SERVER=www.apacheserver.test
 echo -e "\n${yellow}Validació: comprovació des del client (per nom - $NOM_SERVER ) ${endColor}\n"
-docker-compose exec textclient curl  $PROXY http://$NOM_SERVER
+docker-compose exec textclient curl  $PROXY $PROTOCOL$NOM_SERVER
 
 # accedint per nom
 NOM_SERVER=www.facebook.com
 echo -e "\n${yellow}Validació: comprovació des del client (per nom - $NOM_SERVER ) ${endColor}\n"
-docker-compose exec textclient curl  $PROXY http://$NOM_SERVER
+docker-compose exec textclient curl  $PROXY $PROTOCOL$NOM_SERVER
 
 # accedint per nom
 NOM_SERVER=www.elmeuprimerllocweb.org
 echo -e "\n\n${yellow}Validació: comprovació des del client (per nom - $NOM_SERVER ) ${endColor}\n"
-docker-compose exec textclient curl  $PROXY http://$NOM_SERVER
+docker-compose exec textclient curl  $PROXY $PROTOCOL$NOM_SERVER
 
 # comprovar fitxer /etc/hosts
 echo -e "\n${yellow}Validació: comprovació del arxiu /etc/hosts ${endColor}\n"
