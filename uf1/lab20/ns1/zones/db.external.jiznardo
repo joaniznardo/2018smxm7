@@ -1,0 +1,17 @@
+$TTL    604800
+@       IN      SOA     ns1.jiznardo.test. root.jiznardo.test. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      ns1.jiznardo.test.
+@       IN      NS      ns2.jiznardo.test.
+
+ns1     IN      A       10.50.0.10
+ns2     IN      A       10.50.0.11
+
+www     IN      A       10.50.0.30
+mail    IN      A       10.50.0.30
+; FTP is NOT exposed externally

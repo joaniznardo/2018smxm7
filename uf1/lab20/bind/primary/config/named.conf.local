@@ -1,0 +1,9 @@
+zone "demom8asix.test" {
+    type master;
+    file "/etc/bind/zones/db.demom8asix.test";
+};
+
+zone "0.50.10.in-addr.arpa" {
+    type master;
+    file "/etc/bind/zones/db.10.50.0";
+};

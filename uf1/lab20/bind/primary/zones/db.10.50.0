@@ -1,0 +1,17 @@
+$TTL    604800
+@       IN      SOA     ns1.demom8asix.test. admin.demom8asix.test. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      ns1.demom8asix.test.
+@       IN      NS      ns2.demom8asix.test.
+
+; PTR Records
+30      IN      PTR     ns1.demom8asix.test.
+40      IN      PTR     ns2.demom8asix.test.
+12      IN      PTR     web.demom8asix.test.
+10      IN      PTR     ftp.demom8asix.test.
+14      IN      PTR     mail.demom8asix.test.

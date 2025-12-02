@@ -1,0 +1,15 @@
+{
+  "users": [
+    {
+      "status": 1,
+      "username": "alumne",
+      "password": "password",
+      "home_dir": "/srv/sftpgo/data/alumne",
+      "uid": 1000,
+      "gid": 1000,
+      "permissions": {
+        "/": ["*"]
+      }
+    }
+  ]
+}

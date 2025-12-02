@@ -1,0 +1,15 @@
+acl "trusted" {
+    10.50.0.0/24;
+    127.0.0.0/8;
+};
+
+options {
+    directory "/var/cache/bind";
+
+    recursion yes;
+    allow-query { trusted; };
+
+    listen-on-v6 { any; };
+    
+    dnssec-validation auto;
+};

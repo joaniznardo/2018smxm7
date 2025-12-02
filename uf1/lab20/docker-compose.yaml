@@ -1,0 +1,94 @@
+networks:
+  internal_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.50.0/24
+  external_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.50.0.0/24
+
+services:
+  # Primary DNS
+  ns1:
+    image: ubuntu/bind9:latest
+    container_name: ns1
+    hostname: ns1
+    # ports:
+    #   - "53:53/udp"
+    #   - "53:53/tcp"
+    networks:
+      internal_net:
+        ipv4_address: 192.168.50.10
+      external_net:
+        ipv4_address: 10.50.0.10
+    volumes:
+      - ./ns1:/etc/bind
+    tty: true
+    stdin_open: true
+
+  # Secondary DNS
+  ns2:
+    image: ubuntu/bind9:latest
+    container_name: ns2
+    hostname: ns2
+    networks:
+      internal_net:
+        ipv4_address: 192.168.50.11
+      external_net:
+        ipv4_address: 10.50.0.11
+    volumes:
+      - ./ns2:/etc/bind
+    tty: true
+    stdin_open: true
+
+  # Clients
+  client-int:
+    image: nicolaka/netshoot
+    container_name: client-int
+    hostname: client-int
+    networks:
+      internal_net:
+        ipv4_address: 192.168.50.20
+    command: sleep infinity
+    dns:
+      - 192.168.50.10
+      - 192.168.50.11
+
+  client-ext:
+    image: nicolaka/netshoot
+    container_name: client-ext
+    hostname: client-ext
+    networks:
+      external_net:
+        ipv4_address: 10.50.0.20
+    command: sleep infinity
+    dns:
+      - 10.50.0.10
+      - 10.50.0.11
+
+  # Dummy Services
+  # WWW & Mail (Accessible from both, but we'll use one container for simplicity attached to both)
+  www-mail:
+    image: nginx:alpine
+    container_name: www-mail
+    hostname: www
+    networks:
+      internal_net:
+        ipv4_address: 192.168.50.30
+      external_net:
+        ipv4_address: 10.50.0.30
+
+  # FTP (Internal only)
+  ftp:
+    image: alpine:latest
+    container_name: ftp
+    hostname: ftp
+    networks:
+      internal_net:
+        ipv4_address: 192.168.50.31
+    # Just a dummy process to keep it running and responding to ping, vsftpd install is optional if we just want ping
+    # For simplicity let's just sleep, but the hostname 'ftp' will resolve to this IP.
+    command: sleep infinity

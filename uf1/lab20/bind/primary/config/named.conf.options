@@ -1,0 +1,16 @@
+acl "trusted" {
+    10.50.0.0/24;
+    127.0.0.0/8;
+};
+
+options {
+    directory "/var/cache/bind";
+
+    recursion yes;
+    allow-query { trusted; };
+    allow-transfer { 10.50.0.40; }; # Allow transfer to ns2
+
+    listen-on-v6 { any; };
+    
+    dnssec-validation auto;
+};

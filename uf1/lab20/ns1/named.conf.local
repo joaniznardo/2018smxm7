@@ -1,0 +1,35 @@
+include "/etc/bind/tsig.key";
+
+view "internal" {
+    match-clients { internal-net; };
+    recursion yes;
+
+    zone "jiznardo.test" {
+        type master;
+        file "/etc/bind/zones/db.internal.jiznardo";
+        allow-transfer { key "tsig-key"; }; // Allow transfer to slave using key
+    };
+
+    zone "50.168.192.in-addr.arpa" {
+        type master;
+        file "/etc/bind/zones/db.internal.192.168.50";
+        allow-transfer { key "tsig-key"; };
+    };
+};
+
+view "external" {
+    match-clients { external-net; };
+    recursion no;
+
+    zone "jiznardo.test" {
+        type master;
+        file "/etc/bind/zones/db.external.jiznardo";
+        allow-transfer { key "tsig-key"; };
+    };
+
+    zone "0.50.10.in-addr.arpa" {
+        type master;
+        file "/etc/bind/zones/db.external.10.50";
+        allow-transfer { key "tsig-key"; };
+    };
+};

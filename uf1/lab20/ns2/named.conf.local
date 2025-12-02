@@ -1,0 +1,43 @@
+include "/etc/bind/tsig.key";
+
+view "internal" {
+    match-clients { internal-net; };
+    recursion yes;
+
+    server 192.168.50.10 {
+        keys { "tsig-key"; };
+    };
+
+    zone "jiznardo.test" {
+        type slave;
+        file "/var/cache/bind/db.internal.jiznardo";
+        masters { 192.168.50.10; };
+    };
+
+    zone "50.168.192.in-addr.arpa" {
+        type slave;
+        file "/var/cache/bind/db.internal.192.168.50";
+        masters { 192.168.50.10; };
+    };
+};
+
+view "external" {
+    match-clients { external-net; };
+    recursion no;
+
+    server 10.50.0.10 {
+        keys { "tsig-key"; };
+    };
+
+    zone "jiznardo.test" {
+        type slave;
+        file "/var/cache/bind/db.external.jiznardo";
+        masters { 10.50.0.10; };
+    };
+
+    zone "0.50.10.in-addr.arpa" {
+        type slave;
+        file "/var/cache/bind/db.external.10.50";
+        masters { 10.50.0.10; };
+    };
+};
